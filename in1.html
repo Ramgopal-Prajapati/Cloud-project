@@ -404,6 +404,183 @@
                 solution += '3. Implement Amazon S3 for storing and serving images and static content efficiently.\n';
                 solution += '4. Utilize AWS Amplify for a full-stack web application with backend services.\n';
             }
+             if (secure && highAvailability && performance) {
+        solution += '1. Implement AWS Secrets Manager to securely manage sensitive information like API keys.\n';
+        solution += '2. Use Amazon RDS with read replicas to enhance performance while ensuring data redundancy.\n';
+        solution += '3. Set up Elastic Load Balancing (ELB) to distribute incoming traffic across healthy targets.\n';
+        solution += '4. Enable AWS Global Accelerator to improve application availability and performance across different regions.\n';
+    }
+
+    // Scenario 2: eCommerce, Performance, and Website
+    if (eCommerce && performance && website) {
+        solution += '1. Use Amazon Elastic Beanstalk for web application deployment with auto-scaling capabilities.\n';
+        solution += '2. Optimize your database using Amazon DynamoDB for fast and predictable performance.\n';
+        solution += '3. Implement Amazon S3 for storing and serving images and static content efficiently.\n';
+        solution += '4. Utilize AWS Amplify for a full-stack web application with backend services.\n';
+    }
+
+    // Scenario 3: Big Data Processing and Analytics
+    if (bigData && analytics) {
+        solution += '1. Use Amazon EMR for big data processing with Apache Spark or Hadoop.\n';
+        solution += '2. Implement Amazon Redshift for data warehousing and analytics.\n';
+        solution += '3. Utilize AWS Glue for ETL (Extract, Transform, Load) processes.\n';
+        solution += '4. Use Amazon Kinesis for real-time data processing.\n';
+    }
+
+    // Scenario 4: Serverless Architecture
+    if (serverless && performance) {
+        solution += '1. Use AWS Lambda for serverless compute to run code without provisioning servers.\n';
+        solution += '2. Implement Amazon API Gateway to create and manage APIs for your application.\n';
+        solution += '3. Utilize Amazon S3 for static website hosting.\n';
+        solution += '4. Use DynamoDB for a serverless database solution.\n';
+    }
+
+    // Scenario 5: Cost-Effective Solutions
+    if (lowCost) {
+        solution += '1. Use Amazon S3 for low-cost object storage.\n';
+        solution += '2. Implement AWS Lambda for pay-as-you-go computing.\n';
+        solution += '3. Use AWS Budgets to monitor and control spending.\n';
+        solution += '4. Leverage Reserved Instances for cost savings on EC2.\n';
+    }
+
+    // Scenario 6: Media Streaming
+    if (mediaStreaming) {
+        solution += '1. Use Amazon CloudFront for content delivery and caching.\n';
+        solution += '2. Implement AWS Elemental Media Services for video processing.\n';
+        solution += '3. Utilize Amazon S3 for storing media assets.\n';
+        solution += '4. Use AWS Amplify for building scalable media applications.\n';
+    }
+
+    // Scenario 7: Compliance and Security
+    if (compliance && secure) {
+        solution += '1. Implement AWS Identity and Access Management (IAM) for secure access controls.\n';
+        solution += '2. Use AWS Config to monitor compliance with internal policies.\n';
+        solution += '3. Enable AWS CloudTrail for logging API calls for auditing purposes.\n';
+        solution += '4. Utilize Amazon GuardDuty for threat detection.\n';
+    }
+
+    // Scenario 8: Scalability and Performance
+    if (scalability && performance) {
+        solution += '1. Use Amazon Auto Scaling to dynamically adjust capacity.\n';
+        solution += '2. Implement Amazon ECS for container orchestration.\n';
+        solution += '3. Use Amazon RDS with Multi-AZ for high availability.\n';
+        solution += '4. Set up Amazon CloudWatch for monitoring and alerts.\n';
+    }
+
+    // Scenario 9: Automation and DevOps
+    if (automation) {
+        solution += '1. Use AWS CodePipeline for continuous integration and continuous delivery.\n';
+        solution += '2. Implement AWS CloudFormation for infrastructure as code.\n';
+        solution += '3. Utilize AWS Systems Manager for operational data management.\n';
+        solution += '4. Leverage AWS Lambda for automating tasks.\n';
+    }
+
+    // Scenario 10: Mobile Application Backend
+    if (mobileApp) {
+        solution += '1. Use AWS Amplify to develop and deploy mobile backends quickly.\n';
+        solution += '2. Implement Amazon Cognito for user authentication and access control.\n';
+        solution += '3. Use Amazon API Gateway for RESTful APIs.\n';
+        solution += '4. Store user data in Amazon DynamoDB.\n';
+    }
+
+    // Scenario 11: IoT Applications
+    if (IoT) {
+        solution += '1. Use AWS IoT Core to connect IoT devices securely.\n';
+        solution += '2. Implement AWS Greengrass for local processing.\n';
+        solution += '3. Utilize Amazon Kinesis for real-time data processing from IoT devices.\n';
+        solution += '4. Use Amazon S3 for storing IoT data securely.\n';
+    }
+              if (secure && highAvailability && performance && automation) {
+        solution += '1. Implement AWS Shield for DDoS protection to secure your applications.\n';
+        solution += '2. Use Amazon RDS with Multi-AZ deployments for high availability and automatic failover.\n';
+        solution += '3. Set up AWS Lambda for automated serverless functions triggered by events.\n';
+        solution += '4. Enable AWS Config for continuous compliance monitoring of your resources.\n';
+    }
+
+    // Scenario 2: Big Data, Multi-Region, and Performance
+    if (bigData && multiRegion && performance) {
+        solution += '1. Use Amazon EMR for distributed big data processing across multiple regions.\n';
+        solution += '2. Implement Amazon Redshift Spectrum to query data across regions without moving it.\n';
+        solution += '3. Utilize AWS Global Accelerator to optimize the performance of your applications globally.\n';
+        solution += '4. Use Amazon S3 for scalable storage of large datasets with cross-region replication.\n';
+    }
+
+    // Scenario 3: Serverless, Microservices, and High Scalability
+    if (serverless && microservices && highAvailability) {
+        solution += '1. Use AWS Fargate to run containers without managing servers, perfect for microservices.\n';
+        solution += '2. Implement Amazon API Gateway to create and manage RESTful APIs for your microservices.\n';
+        solution += '3. Utilize AWS App Mesh for monitoring and controlling microservices communications.\n';
+        solution += '4. Use AWS Lambda for serverless functions that scale automatically based on demand.\n';
+    }
+
+    // Scenario 4: Compliance, Automation, and Multi-Region
+    if (compliance && automation && multiRegion) {
+        solution += '1. Implement AWS Organizations for account management and policy enforcement across regions.\n';
+        solution += '2. Use AWS Control Tower to set up and govern your multi-account environment.\n';
+        solution += '3. Enable AWS Config to automatically evaluate resource compliance in all regions.\n';
+        solution += '4. Utilize AWS CloudFormation StackSets for managing resources across multiple accounts and regions.\n';
+    }
+
+    // Scenario 5: IoT, Big Data, and Real-Time Analytics
+    if (IoT && bigData && performance) {
+        solution += '1. Use AWS IoT Core to securely connect and manage IoT devices.\n';
+        solution += '2. Implement AWS IoT Analytics for analyzing data from your IoT devices.\n';
+        solution += '3. Utilize Amazon Kinesis for processing real-time data streams from IoT devices.\n';
+        solution += '4. Store historical data in Amazon S3 for further analysis and machine learning applications.\n';
+    }
+              if (secure && highAvailability && performance && automation && multiRegion) {
+        solution += '1. Implement AWS Shield Advanced for enhanced DDoS protection to secure your applications.\n';
+        solution += '2. Use Amazon RDS with Multi-AZ deployments and read replicas for high availability and performance across regions.\n';
+        solution += '3. Set up AWS Lambda for automated serverless functions triggered by events in multiple regions.\n';
+        solution += '4. Enable AWS Config and AWS CloudTrail for continuous compliance and auditing across regions.\n';
+        solution += '5. Utilize AWS Global Accelerator to optimize application performance globally.\n';
+    }
+
+    // Scenario 2: Big Data, IoT, Real-Time Analytics, and Disaster Recovery
+    if (bigData && IoT && performance && disasterRecovery) {
+        solution += '1. Use AWS IoT Core to securely connect and manage IoT devices generating big data.\n';
+        solution += '2. Implement AWS Glue for ETL processes to prepare data for analytics.\n';
+        solution += '3. Utilize Amazon Kinesis for processing real-time data streams from IoT devices.\n';
+        solution += '4. Store data in Amazon S3 with cross-region replication for disaster recovery.\n';
+        solution += '5. Analyze the data using Amazon Athena for serverless queries.\n';
+    }
+
+    // Scenario 3: Serverless, Microservices, Cost Efficiency, and Automation
+    if (serverless && highAvailability && automation && performance && compliance) {
+        solution += '1. Use AWS Fargate to run containerized microservices without managing servers, optimizing cost.\n';
+        solution += '2. Implement Amazon API Gateway to create and manage RESTful APIs for your microservices.\n';
+        solution += '3. Utilize AWS Lambda for serverless functions that scale automatically based on demand.\n';
+        solution += '4. Leverage AWS CloudFormation for infrastructure as code, ensuring compliance with policies.\n';
+        solution += '5. Enable AWS Budgets to monitor and control costs effectively.\n';
+    }
+
+    // Scenario 4: High Availability, Compliance, Automation, and Edge Computing
+    if (highAvailability && compliance && automation && IoT && multiRegion) {
+        solution += '1. Implement AWS Outposts to run AWS infrastructure on-premises for low-latency applications.\n';
+        solution += '2. Use AWS CloudFormation for automating infrastructure with compliance checks across multiple regions.\n';
+        solution += '3. Enable Amazon Route 53 for DNS failover to ensure high availability.\n';
+        solution += '4. Utilize AWS Wavelength to deliver ultra-low latency applications at the edge.\n';
+        solution += '5. Implement AWS IoT Greengrass for local processing of IoT data at the edge.\n';
+    }
+
+    // Scenario 5: Performance, Disaster Recovery, Multi-Region, and Big Data
+    if (performance && disasterRecovery && multiRegion && bigData) {
+        solution += '1. Use Amazon Route 53 for geo-routing to direct users to the nearest resources for optimal performance.\n';
+        solution += '2. Implement Amazon RDS with read replicas in multiple regions for high performance and availability.\n';
+        solution += '3. Utilize AWS Backup for centralized backup management across multiple AWS services and regions.\n';
+        solution += '4. Enable Amazon S3 with cross-region replication for data redundancy and disaster recovery.\n';
+        solution += '5. Set up AWS Data Pipeline for orchestrating data workflows across regions.\n';
+    }
+
+    // Scenario 6: Secure, Serverless, Automation, and Real-Time Analytics
+    if (secure && serverless && automation && performance && IoT) {
+        solution += '1. Implement AWS IAM for secure access control to resources.\n';
+        solution += '2. Use AWS Lambda for real-time processing of events from IoT devices.\n';
+        solution += '3. Set up Amazon Kinesis Data Firehose for real-time data streaming.\n';
+        solution += '4. Automate deployments with AWS CodePipeline for continuous integration and delivery.\n';
+        solution += '5. Utilize Amazon QuickSight for real-time data visualization and analytics.\n';
+    }
+
 
             // Fallback if no specific solutions were added
             if (!solution.includes('1.')) {
