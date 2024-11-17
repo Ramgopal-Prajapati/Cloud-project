@@ -1,25 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AWS Architecture Generator</title>
+    <title>AWS Cloud Solution Generator</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 10px;
+            margin: 0;
+            padding: 0;
+            background: url('cloud.svg') no-repeat center center fixed;
+            background-size: contain;
+            color: #333;
         }
+
+        header {
+            background-color: rgba(0, 123, 255, 0);
+            padding: 10px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 25px;
+        }
+
+        .container {
+            background-color: rgba(226, 236, 128, 0);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 215px auto;
+            max-width: 1000px;
+            box-shadow: 7px 5px 23px rgb(7, 0, 228);
+        }
+
         h1 {
             text-align: center;
+            background-color: #c29d0f;
+            font-size: 35px;
         }
+
         textarea {
-            width: 100%;
+            width: 97%;
             height: 100px;
-            margin: 10px 0;
+            margin: 13px 0;
+            padding: 10px;
+            border-radius: 10px;
+            border: 3px solid;
+            background-color: #14bef24f;
+            font-size: 30px;
+            font-weight: 1000;
         }
+
         button {
             padding: 10px 20px;
             background-color: #007bff;
@@ -27,45 +64,827 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            transition: background 0.3s;
+            margin-left: 412px;
         }
+
         button:hover {
-            background-color: #0056b3;
+            background-color: #24eb35;
         }
-        #output {
-            margin-top: 20px;
-            padding: 10px;
+
+        #solution {
+            margin-top: 30px;
+            padding: 17px;
+            border: 8px solid #87c869;
+            border-radius: 5px;
+            background-color: #ffffffdb;
+            white-space: pre-wrap;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .examples {
+            margin-top: 40px;
+            padding: 20px;
             border: 1px solid #ccc;
             border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+
+        .examples h2 {
+            text-align: center;
+        }
+
+        .example {
+            margin: 19px 0;
+            margin-top: 19px;
+            margin-left: 0px;
+            font-style: italic;
+            margin-left: 729px;
+            margin-top: 25px;
+            font-size: 20px;
+        }
+
+        #services {
+            margin-top: 40px;
+            padding: 20px;
+            border: 2px solid #007bff;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+
+        @media (max-width: 600px) {
+            nav {
+                flex-direction: column;
+                align-items: flex-start;
+                font-size: 12px;
+            }
+
+            h1 {
+                text-align: center;
+                background-color: #c29d0f;
+                font-size: 18px;
+            }
+
+            button {
+                width: 80%;
+                margin-left: 28px;
+            }
+
+            .container {
+                background-color: rgba(226, 236, 128, 0);
+                border-radius: 31px;
+                padding: 33px;
+                margin: 95px auto;
+                max-width: 1000px;
+                box-shadow: 4px 5px 23px rgb(7, 0, 228);
+            }
+
+            .example {
+                margin-left: 0;
+            }
         }
     </style>
 </head>
+
 <body>
-    <h1>AWS Architecture Diagram Generator</h1>
-    <textarea id="prompt" placeholder="Enter your AWS architecture requirements..."></textarea>
-    <button onclick="generateCloudcraftLink()">Generate Diagram</button>
-    <div id="output"></div>
+    <header>
+        <nav>
+            <h2 style="margin: 10;">Welcome to AWS Cloud Solutions</h2>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>AWS Cloud Solution Generator</h1>
+        <textarea id="prompt" placeholder="Describe your AWS cloud problem here..."></textarea>
+        <button onclick="generateSolution()">Generate Solution</button>
+        <div id="solution"></div>
+    </div>
+
+    <div class="examples">
+        <h2>Example Prompts</h2>
+        <div class="example">1. "How can I secure my e-commerce website on AWS?"</div>
+        <div class="example">2. "What solutions are available for handling traffic spikes?"</div>
+        <div class="example">3. "I need a cost-effective way to host my web application."</div>
+        <div class="example">4. "How can I improve the performance of my AWS-hosted application?"</div>
+        <div class="example">5. "What options do I have for high availability on AWS?"</div>
+        <div id="services">
+            <h2>Top AWS Services</h2>
+            <ul>
+                <li><strong>Amazon EC2</strong>: Scalable virtual servers for hosting applications. Users can choose
+                    instance types optimized for different workloads, allowing for flexible resource allocation and cost
+                    management.</li>
+                <li><strong>Amazon S3</strong>: Object storage for storing and retrieving data. S3 offers durability,
+                    availability, and scalability, making it ideal for backup, archiving, and data lakes.</li>
+                <li><strong>Amazon RDS</strong>: Managed relational database service that supports several database
+                    engines including MySQL, PostgreSQL, and Oracle. It automates time-consuming tasks like backups and
+                    patching.</li>
+                <li><strong>AWS Lambda</strong>: Serverless computing for event-driven applications. Lambda allows users
+                    to run code without provisioning servers, charging only for compute time used.</li>
+                <li><strong>Amazon DynamoDB</strong>: Fully managed NoSQL database service. It provides fast and
+                    predictable performance with seamless scalability, making it suitable for high-traffic applications.
+                </li>
+                <li><strong>Amazon VPC</strong>: Isolated virtual network for your cloud resources. Users can configure
+                    their network environment, control IP address ranges, and create subnets for better security and
+                    organization.</li>
+                <li><strong>AWS Elastic Beanstalk</strong>: PaaS for deploying applications easily. It automates the
+                    deployment process, including scaling, load balancing, and monitoring, allowing developers to focus
+                    on writing code.</li>
+                <li><strong>Amazon CloudFront</strong>: CDN for fast content delivery globally. It caches copies of
+                    content at edge locations worldwide to reduce latency and improve performance for users.</li>
+                <li><strong>Amazon Route 53</strong>: Scalable DNS web service for domain management. It offers features
+                    like health checks and traffic management to ensure high availability and reliability.</li>
+                <li><strong>AWS IAM</strong>: Service for managing user access and permissions. It allows for
+                    fine-grained control of AWS resources, helping to secure environments through identity management.
+                </li>
+                <li><strong>Amazon SNS</strong>: Managed service for sending notifications. It enables
+                    application-to-person communication via SMS, email, and mobile push notifications.</li>
+                <li><strong>AWS CloudFormation</strong>: Automate infrastructure provisioning using code. Users can
+                    define and deploy resources as templates, ensuring consistent and repeatable setups.</li>
+                <li><strong>Amazon SQS</strong>: Fully managed message queuing service. It decouples and scales
+                    microservices, distributed systems, and serverless applications, enhancing reliability and
+                    performance.</li>
+                <li><strong>AWS CloudWatch</strong>: Monitoring service for AWS resources and applications. It collects
+                    and tracks metrics, collects log files, and sets alarms to maintain system health.</li>
+                <li><strong>Amazon EKS</strong>: Managed Kubernetes service for containerized applications. It
+                    simplifies deploying, managing, and scaling containerized applications using Kubernetes.</li>
+                <li><strong>Amazon ECR</strong>: Fully managed Docker container registry. It makes it easy for
+                    developers to store, manage, and deploy Docker container images securely.</li>
+                <li><strong>Amazon Redshift</strong>: Fast, fully managed data warehouse service. It allows users to
+                    analyze large datasets quickly and cost-effectively using SQL and business intelligence tools.</li>
+                <li><strong>Amazon EMR</strong>: Managed Hadoop framework that makes it easy to process vast amounts of
+                    data. EMR simplifies big data processing using popular frameworks like Apache Spark.</li>
+                <li><strong>AWS Glue</strong>: Serverless data integration service. It prepares and transforms data for
+                    analytics, making it easier to load and query datasets in AWS services.</li>
+                <li><strong>AWS Step Functions</strong>: Serverless orchestration service. It allows users to coordinate
+                    multiple AWS services into serverless workflows, making complex tasks easier to manage.</li>
+                <li><strong>Amazon QuickSight</strong>: Fast, cloud-powered business analytics service. It provides data
+                    visualization and insights to help users make informed business decisions.</li>
+                <li><strong>Amazon SageMaker</strong>: Fully managed service for building, training, and deploying
+                    machine learning models. It simplifies the machine learning workflow, allowing developers to work
+                    efficiently.</li>
+                <li><strong>AWS IoT Core</strong>: Managed cloud service for connecting IoT devices. It enables secure
+                    communication between devices and AWS applications, providing a scalable and reliable
+                    infrastructure.</li>
+                <li><strong>AWS AppSync</strong>: Managed service for building GraphQL APIs. It simplifies data
+                    retrieval and synchronization between applications and data sources, enhancing application
+                    performance.</li>
+                <li><strong>AWS CloudTrail</strong>: Service for logging and monitoring AWS account activity. It enables
+                    governance, compliance, and operational and risk auditing by tracking user activity and API calls.
+                </li>
+                <li><strong>AWS Direct Connect</strong>: Service for establishing a dedicated network connection to AWS.
+                    It provides more consistent network performance and increased bandwidth at lower costs.</li>
+                <li><strong>AWS Backup</strong>: Centralized backup service for AWS resources. It automates and
+                    centrally manages backups, ensuring data durability and compliance across services.</li>
+                <li><strong>Amazon WorkSpaces</strong>: Managed, secure Desktop-as-a-Service (DaaS) solution. It enables
+                    users to access cloud-based virtual desktops from any device.</li>
+                <li><strong>Amazon Chime</strong>: Communications service for online meetings, video conferencing, and
+                    messaging. It provides secure and reliable communication for organizations.</li>
+                <li><strong>AWS App Runner</strong>: Service for building and running web applications without managing
+                    infrastructure. It abstracts the underlying infrastructure, making deployment easy and fast.</li>
+                <li><strong>AWS Device Farm</strong>: Managed service for testing mobile and web applications on real
+                    devices. It helps developers improve app quality by providing a comprehensive testing environment.
+                </li>
+                <li><strong>AWS Snowball</strong>: Data transport solution for transferring large amounts of data into
+                    and out of AWS. It simplifies data migration by using secure physical devices.</li>
+                <li><strong>AWS Global Accelerator</strong>: Networking service that improves the availability and
+                    performance of applications with users globally. It directs user traffic to optimal endpoints based
+                    on health and routing policies.</li>
+                <li><strong>AWS Fargate</strong>: Serverless compute engine for containers. It allows users to run
+                    containers without managing servers or clusters, simplifying container management.</li>
+                <li><strong>Amazon Polly</strong>: Text-to-speech service that turns text into lifelike speech. It
+                    enhances applications with speech capabilities, enabling voice-driven interactions.</li>
+                <li><strong>Amazon Rekognition</strong>: Image and video analysis service. It enables applications to
+                    analyze and identify objects, scenes, and faces in images and videos using machine learning.</li>
+                <li><strong>Amazon Lex</strong>: Service for building conversational interfaces using voice and text. It
+                    simplifies the development of chatbots and virtual assistants powered by AI.</li>
+                <li><strong>AWS Shield</strong>: Managed DDoS protection service. It safeguards applications from
+                    Distributed Denial of Service attacks, ensuring high availability and security.</li>
+                <li><strong>AWS Secrets Manager</strong>: Service for managing secrets and sensitive information. It
+                    helps users securely store, retrieve, and manage access to secrets like API keys and credentials.
+                </li>
+                <li><strong>AWS CodePipeline</strong>: Continuous integration and delivery service for fast application
+                    updates. It automates the build, test, and release phases of the software development lifecycle.
+                </li>
+                <li><strong>AWS CodeBuild</strong>: Fully managed build service that compiles source code and runs
+                    tests. It eliminates the need to provision and manage build servers, simplifying the CI/CD process.
+                </li>
+                <li><strong>AWS CodeDeploy</strong>: Automated deployment service for applications. It allows developers
+                    to deploy applications to various compute services with minimal downtime.</li>
+                <li><strong>Amazon Kinesis</strong>: Service for real-time data processing and analytics. It allows
+                    users to easily collect, process, and analyze streaming data at scale.</li>
+                <li><strong>Amazon Athena</strong>: Serverless interactive query service for analyzing data in S3. It
+                    allows users to run SQL queries on their data without the need for complex ETL processes.</li>
+                <li><strong>AWS DataSync</strong>: Service for automating data transfer between on-premises storage and
+                    AWS. It simplifies and accelerates moving large amounts of data to and from AWS.</li>
+                <li><strong>AWS Amplify</strong>: Development platform for building mobile and web applications. It
+                    provides a set of tools and services to streamline app development, including backend and hosting
+                    options.</li>
+                <li><strong>AWS Budgets</strong>: Service for managing and tracking AWS costs. It allows users to set
+                    custom cost and usage budgets, helping to maintain financial control over cloud spending.</li>
+                <li><strong>AWS Config</strong>: Service for assessing, auditing, and evaluating configurations of AWS
+                    resources. It helps ensure compliance and security by tracking changes and monitoring resources.
+                </li>
+                <li><strong>AWS Trusted Advisor</strong>: Service that provides real-time guidance to help provision
+                    your resources following AWS best practices. It helps optimize performance, security, and cost.</li>
+                <li><strong>Amazon MQ</strong>: Managed message broker service for Apache ActiveMQ and RabbitMQ. It
+                    simplifies setting up and managing message brokers, enhancing messaging capabilities in
+                    applications.</li>
+                <li><strong>AWS Elemental MediaConvert</strong>: File-based video transcoding service. It allows users
+                    to convert media files into formats suitable for broadcast and streaming.</li>
+                <li><strong>AWS Elemental MediaLive</strong>: Service for live video processing and broadcasting. It
+                    enables real-time video streaming to a variety of devices and platforms.</li>
+                <li><strong>Amazon Transcribe</strong>: Automatic speech recognition (ASR) service that converts speech
+                    to text. It enhances applications with transcription capabilities, enabling voice interactions and
+                    documentation.</li>
+                <li><strong>Amazon Comprehend</strong>: Natural language processing (NLP) service that analyzes text for
+                    sentiment, key phrases, and entities. It helps applications gain insights from unstructured data.
+                </li>
+                <li><strong>AWS RoboMaker</strong>: Development environment for robotics applications. It provides
+                    simulation, deployment, and management capabilities for developing and testing robotics software.
+                </li>
+                <li><strong>AWS Lookout for Metrics</strong>: Service that uses machine learning to detect anomalies in
+                    data. It helps organizations identify unexpected changes and trends in their data sets.</li>
+                <li><strong>AWS Lookout for Vision</strong>: Service for image analysis that detects defects in products
+                    using machine learning. It helps improve quality control and reduce operational costs.</li>
+                <li><strong>AWS Personalize</strong>: Machine learning service that enables developers to create
+                    personalized user experiences. It recommends products, content, and more based on user behavior.
+                </li>
+                <li><strong>AWS Forecast</strong>: Service that uses machine learning to deliver accurate forecasts. It
+                    helps businesses make better decisions based on predictive analytics.</li>
+                <li><strong>Amazon Elastic File System (EFS)</strong>: Managed file storage service for use with AWS
+                    Cloud services and on-premises resources. It provides scalable file storage accessible from multiple
+                    instances.</li>
+                <li><strong>Amazon FSx</strong>: Managed file systems for Windows and Lustre. It provides fully managed
+                    file storage optimized for different workloads and applications.</li>
+                <li><strong>AWS Snowmobile</strong>: Exabyte-scale data transfer service. It helps organizations
+                    transfer large data sets to AWS using a secure shipping container.</li>
+                <li><strong>AWS Service Catalog</strong>: Service for creating and managing catalogs of IT services. It
+                    helps organizations manage and deploy resources using pre-approved products.</li>
+                <li><strong>Amazon GameLift</strong>: Managed service for deploying and scaling game servers. It
+                    simplifies game server management, matchmaking, and player session management.</li>
+                <li><strong>AWS Ground Station</strong>: Fully managed service that enables users to control satellite
+                    communications. It allows users to ingest and process satellite data directly into AWS.</li>
+                <li><strong>Amazon Simple Email Service (SES)</strong>: Scalable email sending service for marketing and
+                    transactional emails. It helps businesses send bulk emails with high deliverability rates.</li>
+                <li><strong>AWS Data Pipeline</strong>: Service for automating the movement and transformation of data.
+                    It allows users to manage complex data workflows and integrate data from various sources.</li>
+                <li><strong>AWS Step Functions</strong>: Serverless orchestration service that simplifies building
+                    complex workflows. It allows developers to coordinate multiple AWS services into serverless
+                    workflows.</li>
+                <li><strong>AWS App Mesh</strong>: Service mesh that provides application-level networking. It
+                    simplifies service-to-service communication and enhances microservices architectures.</li>
+                <li><strong>Amazon Connect</strong>: Cloud-based contact center service. It enables businesses to set up
+                    and manage customer contact centers efficiently, enhancing customer experiences.</li>
+                <li><strong>AWS Elastic Load Balancing (ELB)</strong>: Automatically distributes incoming application
+                    traffic across multiple targets. It helps achieve fault tolerance and improves application
+                    availability.</li>
+                <li><strong>AWS Managed Blockchain</strong>: Service for creating and managing scalable blockchain
+                    networks. It simplifies the setup and governance of blockchain frameworks, enhancing decentralized
+                    applications.</li>
+                <li><strong>Amazon Kinesis Data Firehose</strong>: Service for capturing, transforming, and loading
+                    streaming data. It simplifies the process of reliably delivering data to data lakes, analytics, and
+                    storage services.</li>
+                <li><strong>Amazon Kinesis Data Analytics</strong>: Service for processing streaming data in real-time
+                    using SQL. It enables organizations to gain insights from data as it flows through their
+                    applications.</li>
+                <li><strong>AWS Amplify Studio</strong>: Low-code development environment for building web and mobile
+                    applications. It accelerates development by providing a visual interface for designing applications.
+                </li>
+                <li><strong>Amazon Pinpoint</strong>: Service for targeted marketing campaigns. It enables businesses to
+                    send personalized messages to users via email, SMS, and mobile push notifications.</li>
+                <li><strong>AWS Resource Access Manager (RAM)</strong>: Service for sharing AWS resources across
+                    accounts. It enhances collaboration and resource utilization among multiple AWS accounts.</li>
+                <li><strong>Amazon Managed Service for Prometheus</strong>: Fully managed service for monitoring
+                    containerized applications. It provides a scalable and secure way to collect and query metrics from
+                    applications.</li>
+                <li><strong>Amazon Managed Service for Grafana</strong>: Fully managed service for visualizing
+                    application metrics. It allows users to create and share dashboards to monitor applications in
+                    real-time.</li>
+                <li><strong>Amazon SageMaker Ground Truth</strong>: Service for building highly accurate training
+                    datasets for machine learning. It provides tools for data labeling, enabling improved model
+                    training.</li>
+                <li><strong>AWS Cost and Usage Report</strong>: Service that provides detailed billing information. It
+                    helps users analyze their AWS usage and optimize costs based on detailed reports.</li>
+                <li><strong>AWS Data Exchange</strong>: Service that makes it easy to find, subscribe to, and use
+                    third-party data in the cloud. It helps organizations integrate external data with their own for
+                    better insights.</li>
+                <li><strong>AWS Glue DataBrew</strong>: Visual data preparation tool for data analysts. It allows users
+                    to clean and transform data without writing code, accelerating data analytics workflows.</li>
+                <li><strong>AWS Managed Services (AMS)</strong>: Service for managing AWS infrastructure. It provides
+                    operational governance, security, and automation for AWS environments.</li>
+                <li><strong>AWS Marketplace</strong>: Digital catalog of third-party software and services. It allows
+                    users to find, buy, and deploy software for AWS environments easily.</li>
+                <li><strong>Amazon Sumerian</strong>: Service for building and running AR/VR applications. It enables
+                    developers to create immersive experiences without extensive programming skills.</li>
+                <li><strong>AWS Glue Elastic Views</strong>: Service for creating materialized views from multiple data
+                    sources. It simplifies the integration of disparate data into unified views for analysis.</li>
+                <li><strong>AWS Auto Scaling</strong>: Service for automatically adjusting resources to meet demand. It
+                    helps maintain application performance and optimize costs by dynamically scaling resources.</li>
+                <li><strong>Amazon EKS Anywhere</strong>: Service for running Amazon EKS on your own infrastructure. It
+                    provides flexibility for managing Kubernetes clusters in various environments.</li>
+                <li><strong>AWS Cost Explorer API</strong>: API for programmatically accessing AWS Cost Explorer
+                    features. It enables developers to retrieve detailed billing information for analysis and reporting.
+                </li>
+                <li><strong>AWS Snow Family</strong>: Collection of physical devices for edge computing and data
+                    transfer. It includes Snowcone, Snowball, and Snowmobile, providing options for various data
+                    transfer needs.</li>
+                <li><strong>AWS PrivateLink</strong>: Service for securely connecting VPCs to AWS services without using
+                    public IPs. It enhances security by keeping network traffic within the AWS network.</li>
+                <li><strong>Amazon Elastic Inference</strong>: Service that allows users to attach low-cost GPU-powered
+                    inference to Amazon EC2 instances. It accelerates deep learning inference workloads while reducing
+                    costs.</li>
+                <li><strong>AWS Well-Architected Tool</strong>: Service for reviewing cloud architectures based on AWS
+                    best practices. It helps users identify areas of improvement and optimize cloud workloads.</li>
+                <li><strong>AWS Cloud Map</strong>: Service for discovering and managing application resources. It
+                    enables users to register any application resources and discover them using APIs.</li>
+                <li><strong>Amazon CodeGuru</strong>: Machine learning-powered service that helps developers improve
+                    code quality. It provides recommendations for code improvements and performance optimizations.</li>
+                <li><strong>AWS Global Accelerator</strong>: Service that improves application availability and
+                    performance for global users. It provides static IP addresses that act as a fixed entry point to
+                    applications.</li>
+                <li><strong>Amazon EBS (Elastic Block Store)</strong>: Service for block-level storage volumes for use
+                    with Amazon EC2. It provides persistent storage that can be easily scaled based on application
+                    needs.</li>
+                <li><strong>Amazon Elastic Load Balancer (ELB)</strong>: Automatically distributes incoming application
+                    traffic across multiple targets. It enhances availability and fault tolerance by balancing loads.
+                </li>
+                <li><strong>AWS Secrets Manager</strong>: Service for securely storing, accessing, and managing secrets.
+                    It simplifies managing API keys, database credentials, and other sensitive information.</li>
+                <li><strong>AWS Glue Data Catalog</strong>: Central metadata repository for all data assets in AWS. It
+                    helps organize and discover data across AWS services, enhancing data governance and management.</li>
+                <li><strong>AWS Resource Groups</strong>: Service for managing and organizing resources in AWS. It
+                    enables users to create groups of resources for simplified management and monitoring.</li>
+                <li><strong>AWS License Manager</strong>: Service for managing software licenses in AWS. It helps
+                    organizations track and manage licenses to ensure compliance and optimize costs.</li>
+                <li><strong>AWS Identity Store</strong>: Central repository for managing user identities across multiple
+                    AWS services. It simplifies user management and enhances security for applications.</li>
+                <li><strong>Amazon Connect Wisdom</strong>: AI-powered service that provides agents with relevant
+                    information during customer interactions. It enhances customer support by improving agent
+                    productivity.</li>
+                <li><strong>AWS CloudEndure</strong>: Disaster recovery service that enables organizations to recover
+                    applications in AWS. It automates the replication of applications to enhance business continuity.
+                </li>
+                <li><strong>AWS Outposts</strong>: Fully managed service that extends AWS infrastructure to on-premises
+                    locations. It allows organizations to run AWS services locally for low-latency workloads.</li>
+                <li><strong>Amazon QLDB</strong>: Fully managed ledger database. It provides a transparent, immutable,
+                    and cryptographically verifiable transaction log for applications that require a reliable record of
+                    transactions.</li>
+                <li><strong>AWS Control Tower</strong>: Service for setting up and governing multi-account AWS
+                    environments. It provides best practices and automated compliance checks for managing AWS accounts.
+                </li>
+                <li><strong>Amazon SageMaker Studio</strong>: Integrated development environment for machine learning.
+                    It provides tools for building, training, and deploying ML models in a unified interface.</li>
+                <li><strong>AWS Chatbot</strong>: Service for integrating AWS services with collaboration platforms like
+                    Slack and Amazon Chime. It enables notifications and monitoring of AWS resources through chat
+                    interfaces.</li>
+                <li><strong>AWS Graviton</strong>: AWS-designed processors optimized for performance and
+                    cost-efficiency. They offer significant improvements in price-performance for a wide range of
+                    workloads.</li>
+                <li><strong>AWS Identity and Access Management (IAM)</strong>: Service for managing access to AWS
+                    resources. It allows users to create and manage AWS users and permissions securely.</li>
+                <li><strong>AWS Organizations</strong>: Service for managing multiple AWS accounts centrally. It helps
+                    organizations manage billing, security, and compliance across their AWS environments.</li>
+                <li><strong>Amazon Simple Notification Service (SNS)</strong>: Managed service for sending
+                    notifications. It enables the sending of messages to a large number of recipients through various
+                    communication channels.</li>
+                <li><strong>AWS Service Quotas</strong>: Service for managing quotas for AWS services. It helps users
+                    monitor and manage resource limits to ensure compliance and avoid service disruptions.</li>
+                <li><strong>Amazon Pinpoint</strong>: Service for targeted marketing campaigns and user engagement. It
+                    allows businesses to send personalized messages to users through various channels.</li>
+                <li><strong>Amazon WorkDocs</strong>: Secure content creation, storage, and collaboration service. It
+                    allows users to create, edit, and share documents securely within teams.</li>
+                <li><strong>AWS Ground Station</strong>: Managed service for satellite communications. It enables users
+                    to control satellite ground stations and ingest satellite data into AWS.</li>
+                <li><strong>Amazon S3 Glacier</strong>: Low-cost cloud storage for data archiving and long-term backup.
+                    It provides secure and durable storage options for infrequently accessed data.</li>
+                <li><strong>AWS Transfer Family</strong>: Fully managed service for transferring files over SFTP, FTPS,
+                    and FTP. It simplifies secure file transfers to and from AWS storage services.</li>
+                <li><strong>AWS Security Hub</strong>: Service for aggregating security alerts and compliance status
+                    across AWS accounts. It helps organizations gain visibility into their security posture.</li>
+                <li><strong>Amazon Elastic Container Service (ECS)</strong>: Fully managed container orchestration
+                    service. It simplifies the deployment and management of containerized applications at scale.</li>
+                <li><strong>AWS Compute Optimizer</strong>: Service that recommends optimal AWS resources for workloads.
+                    It helps users optimize their compute resources for cost savings and performance.</li>
+                <li><strong>AWS Artifact</strong>: Service that provides on-demand access to AWS compliance reports and
+                    security documentation. It helps organizations maintain compliance and transparency in their cloud
+                    environments.</li>
+                <li><strong>AWS Config Rules</strong>: Service for setting up compliance checks for AWS resources. It
+                    helps organizations ensure resources comply with security and governance policies.</li>
+                <li><strong>AWS DataSync Agent</strong>: Software for transferring data between on-premises storage and
+                    AWS. It facilitates efficient data transfer for migration and backup purposes.</li>
+                <li><strong>Amazon S3 Select</strong>: Feature that enables applications to retrieve a subset of data
+                    from an S3 object. It reduces the amount of data transferred and improves query performance.</li>
+                <li><strong>AWS Well-Architected Tool</strong>: Service that helps users review their architectures
+                    based on AWS best practices. It identifies areas for improvement in security, reliability, and
+                    performance.</li>
+                <li><strong>AWS Identity Store</strong>: Central repository for managing user identities across multiple
+                    AWS services. It simplifies user management and enhances security for applications.</li>
+                <li><strong>AWS Budgets</strong>: Service for tracking and managing AWS costs. It enables users to
+                    create custom budgets and alerts based on their spending patterns.</li>
+                <li><strong>AWS Compute Optimizer</strong>: Service that recommends optimal AWS resources based on usage
+                    patterns. It helps organizations optimize their compute costs and performance.</li>
+            </ul>
+        </div>
+
+    </div>
 
     <script>
-        function generateCloudcraftLink() {
+        function generateSolution() {
             const prompt = document.getElementById('prompt').value;
-            const outputDiv = document.getElementById('output');
+            const solutionDiv = document.getElementById('solution');
 
             if (!prompt) {
-                outputDiv.innerHTML = 'Please enter a prompt.';
+                solutionDiv.innerHTML = 'Please enter a problem description.';
                 return;
             }
 
-            // Here we create a basic Cloudcraft URL
-            // For demonstration, we will append the prompt to the URL.
-            const baseCloudcraftUrl = 'https://cloudcraft.co/diagram/create?prompt=';
-            const encodedPrompt = encodeURIComponent(prompt);
-            const cloudcraftUrl = `${baseCloudcraftUrl}${encodedPrompt}`;
+            let solution = 'Proposed Solution:\n\n';
+            const keywords = prompt.toLowerCase();
 
-            outputDiv.innerHTML = `
-                <h3>Generated Cloudcraft Diagram Link:</h3>
-                <a href="${cloudcraftUrl}" target="_blank">${cloudcraftUrl}</a>
-            `;
+            const eCommerce = keywords.includes("e-commerce");
+            const college = keywords.includes("college");
+            const department = keywords.includes("department");
+            const section = keywords.includes("section");
+            const groups = keywords.includes("groups");
+            const scalability = keywords.includes("scalability");
+            const backupAndRecovery = keywords.includes("backupAndRecovery");
+            const adminSection = keywords.includes("adminSection");
+            const costEfficienc = keywords.includes("costEfficienc");
+
+
+            const website = keywords.includes("website");
+            const hosting = keywords.includes("host");
+            const secure = keywords.includes("secure");
+            const highAvailability = keywords.includes("high availability") || keywords.includes("fault tolerant");
+            const trafficSpikes = keywords.includes("traffic spikes");
+            const costEffective = keywords.includes("cost-effective");
+            const performance = keywords.includes("performance");
+            const optimization = keywords.includes("cost optimized") || keywords.includes("optimization");
+
+            const hospital = keywords.includes("hospital");
+            const patientManagement = keywords.includes("patientManagement");
+            const healthcareData = keywords.includes("healthcareData");
+            const security = keywords.includes("security");
+            const scalabilitys = keywords.includes("scalabilitys");
+            const shoppingMall = keywords.includes("shoppingMall");
+            const storeManagement = keywords.includes("storeManagement");
+            const customerData = keywords.includes("customerData");
+
+            const smartCity = keywords.includes("smartCity");
+            const IoTDevices = keywords.includes("IoTDevices");
+            const cityManagement = keywords.includes("cityManagement");
+
+            const colony = keywords.includes("colony");
+            const residentManagement = keywords.includes("residentManagement");
+            const communityData = keywords.includes("communityData");
+
+            const bigMarket = keywords.includes("bigMarket");
+            const vendorManagement = keywords.includes("vendorManagement");
+            const inventoryData = keywords.includes("inventoryData");
+
+            const startup = keywords.includes("startup");
+            const productDevelopment = keywords.includes("productDevelopment");
+            const databaseApplication = keywords.includes("databaseApplication");
+            const database = keywords.includes("database");
+
+
+            if (databaseApplication) {
+                solution += '1. Use Amazon RDS (MySQL/PostgreSQL/Aurora) to deploy and manage relational databases.\n';
+                solution += '2. Implement Amazon DynamoDB for highly scalable NoSQL database solutions.\n';
+                solution += '3. Set up Amazon S3 for storing database backups and data archives.\n';
+                solution += '4. Use Amazon Elasticache to improve database performance with caching.\n';
+                solution += '5. Set up Amazon Route 53 for DNS management and routing to database instances.\n';
+                solution += '6. Enable Auto Scaling for EC2 instances to handle database traffic spikes and growth.\n';
+                solution += '7. Use AWS IAM for fine-grained access control and secure database access.\n';
+                solution += '8. Implement AWS WAF to protect against SQL injection and other database attacks.\n';
+                solution += '9. Use Amazon CloudWatch for database performance monitoring and alerting.\n';
+                solution += '10. Implement Multi-AZ for high availability and automatic failover for RDS databases.\n';
+                solution += '11. Enable automated backups for RDS and snapshots for disaster recovery.\n';
+                solution += '12. Use Amazon Aurora Global Databases for cross-region database replication and failover.\n';
+                solution += '13. Leverage AWS Cost Explorer to manage and optimize database-related cloud costs.\n';
+            }
+            if (database) {
+                solution += '1. Use Amazon RDS (MySQL/PostgreSQL/Aurora) to deploy and manage relational databases.\n';
+                solution += '2. Implement Amazon DynamoDB for highly scalable NoSQL database solutions.\n';
+                solution += '3. Set up Amazon S3 for storing database backups and data archives.\n';
+                solution += '4. Use Amazon Elasticache to improve database performance with caching.\n';
+                solution += '5. Set up Amazon Route 53 for DNS management and routing to database instances.\n';
+                solution += '6. Enable Auto Scaling for EC2 instances to handle database traffic spikes and growth.\n';
+                solution += '7. Use AWS IAM for fine-grained access control and secure database access.\n';
+                solution += '8. Implement AWS WAF to protect against SQL injection and other database attacks.\n';
+                solution += '9. Use Amazon CloudWatch for database performance monitoring and alerting.\n';
+                solution += '10. Implement Multi-AZ for high availability and automatic failover for RDS databases.\n';
+                solution += '11. Enable automated backups for RDS and snapshots for disaster recovery.\n';
+                solution += '12. Use Amazon Aurora Global Databases for cross-region database replication and failover.\n';
+                solution += '13. Leverage AWS Cost Explorer to manage and optimize database-related cloud costs.\n';
+            }
+            if (database && website) {
+                solution += '2. Use Amazon CloudFront for CDN.\n';
+                solution += '3. Implement AWS Certificate Manager for SSL.\n';
+                solution += '4. Use Amazon Route 53 for domain registration and routing.\n';
+                solution += '5. Set up AWS Amplify for full-stack development.\n';
+                solution += '1. Host your website on Amazon S3.\n';
+                solution += '1. Use Amazon RDS (MySQL/PostgreSQL/Aurora) to deploy and manage relational databases.\n';
+                solution += '2. Implement Amazon DynamoDB for highly scalable NoSQL database solutions.\n';
+                solution += '3. Set up Amazon S3 for storing database backups and data archives.\n';
+                solution += '4. Use Amazon Elasticache to improve database performance with caching.\n';
+                solution += '5. Set up Amazon Route 53 for DNS management and routing to database instances.\n';
+                solution += '6. Enable Auto Scaling for EC2 instances to handle database traffic spikes and growth.\n';
+                solution += '7. Use AWS IAM for fine-grained access control and secure database access.\n';
+                solution += '8. Implement AWS WAF to protect against SQL injection and other database attacks.\n';
+                solution += '9. Use Amazon CloudWatch for database performance monitoring and alerting.\n';
+                solution += '10. Implement Multi-AZ for high availability and automatic failover for RDS databases.\n';
+                solution += '11. Enable automated backups for RDS and snapshots for disaster recovery.\n';
+                solution += '12. Use Amazon Aurora Global Databases for cross-region database replication and failover.\n';
+                solution += '13. Leverage AWS Cost Explorer to manage and optimize database-related cloud costs.\n';
+            }
+
+
+            if (startup && productDevelopment && customerData && scalability && backupAndRecovery && security && costEfficiency) {
+                solution += '1. Use Amazon Elastic Beanstalk to deploy and manage startup applications.\n';
+                solution += '2. Utilize Amazon RDS for storing customer data and app data.\n';
+                solution += '3. Implement Amazon CloudFront for fast content delivery to customers.\n';
+                solution += '4. Store marketing materials, media, and other assets in Amazon S3.\n';
+                solution += '5. Set up Amazon Route 53 for DNS management for your startup site.\n';
+                solution += '6. Enable Auto Scaling to handle traffic spikes as the startup grows.\n';
+                solution += '7. Use Amazon Cognito for user authentication and secure access.\n';
+                solution += '8. Implement AWS WAF for protection against malicious traffic and attacks.\n';
+                solution += '9. Leverage AWS IAM for managing startup access to different services and resources.\n';
+                solution += '10. Implement backup and disaster recovery using RDS snapshots and S3.\n';
+                solution += '11. Monitor the performance and usage of your startup platform with Amazon CloudWatch.\n';
+                solution += '12. Use AWS Cost Explorer to manage and optimize your cloud spending.\n';
+                solution += '13. Enable Multi-AZ for high availability and failover protection.\n';
+            }
+            if (bigMarket && vendorManagement && inventoryData && security && scalability && backupAndRecovery && adminSection && costEfficiency) {
+                solution += '1. Use Amazon Elastic Beanstalk for managing large-scale market and vendor applications.\n';
+                solution += '2. Utilize Amazon RDS for managing vendor and inventory databases.\n';
+                solution += '3. Implement Amazon CloudFront for fast delivery of product and marketing content.\n';
+                solution += '4. Store product images, descriptions, and documents in Amazon S3.\n';
+                solution += '5. Set up Amazon Route 53 for DNS management for market-related services.\n';
+                solution += '6. Enable Auto Scaling to adjust based on traffic volume during promotions or sales.\n';
+                solution += '7. Use Amazon Cognito for vendor authentication and secure access management.\n';
+                solution += '8. Use AWS WAF to protect the markets web services from potential cyber threats.\n';
+                solution += '9. Leverage AWS IAM for managing permissions between vendors, admins, and staff.\n';
+                solution += '10. Implement backup strategies using RDS snapshots and S3 backups for inventory protection.\n';
+                solution += '11. Monitor the performance of the market’s applications and inventory systems with CloudWatch.\n';
+                solution += '12. Use AWS Cost Explorer to optimize the marketplaces cloud expenses.\n';
+                solution += '13. Enable Multi-AZ and Cross-Region replication for database redundancy and high availability.\n';
+            }
+            if (colony && residentManagement && communityData && security && scalability && backupAndRecovery && adminSection && costEfficiency) {
+                solution += '1. Use Amazon Elastic Beanstalk for managing neighborhood and resident applications.\n';
+                solution += '2. Use Amazon RDS for managing community data and communications.\n';
+                solution += '3. Implement Amazon CloudFront for fast delivery of neighborhood updates and announcements.\n';
+                solution += '4. Store documents and resident information in Amazon S3.\n';
+                solution += '5. Set up Amazon Route 53 for DNS management for neighborhood portals and websites.\n';
+                solution += '6. Enable Auto Scaling to accommodate increasing usage of neighborhood platforms.\n';
+                solution += '7. Use Amazon Cognito for resident authentication and role-based access control.\n';
+                solution += '8. Use AWS WAF to secure neighborhood portals from threats and unauthorized access.\n';
+                solution += '9. Implement AWS IAM for secure access to community data and portals.\n';
+                solution += '10. Implement automated backups and snapshots to protect community data in RDS and S3.\n';
+                solution += '11. Use Amazon CloudWatch to monitor the performance of neighborhood applications.\n';
+                solution += '12. Optimize costs with AWS Cost Explorer for community management platforms.\n';
+                solution += '13. Enable Multi-AZ and Cross-Region replication for disaster recovery of community data.\n';
+            }
+
+            if (smartCity && IoTDevices && cityManagement && scalability && backupAndRecovery && security && costEfficiency) {
+                solution += '1. Use Amazon Elastic Beanstalk to manage smart city applications and services.\n';
+                solution += '2. Use Amazon RDS for storing traffic data, citizen services, and IoT data.\n';
+                solution += '3. Implement Amazon CloudFront for efficient delivery of city-related information.\n';
+                solution += '4. Store IoT sensor data and analytics in Amazon S3 for scalability.\n';
+                solution += '5. Set up Amazon Route 53 for DNS management with failover for city services.\n';
+                solution += '6. Enable Auto Scaling to handle fluctuating data and demand during peak hours.\n';
+                solution += '7. Use Amazon Cognito for secure authentication of city service users (citizens, admins).\n';
+                solution += '8. Use AWS WAF for security protection against IoT and web-based attacks.\n';
+                solution += '9. Leverage IAM for securing different roles (citizens, city officials, service admins).\n';
+                solution += '10. Implement disaster recovery strategies using RDS backups and S3 snapshots.\n';
+                solution += '11. Monitor city service performance using Amazon CloudWatch to ensure reliability.\n';
+                solution += '12. Use AWS Cost Explorer for tracking and optimizing operational costs for smart city infrastructure.\n';
+                solution += '13. Enable Multi-AZ for failover and disaster recovery of critical city data.\n';
+            }
+            if (smartCity) {
+                solution += '1. Use Amazon Elastic Beanstalk to manage smart city applications and services.\n';
+                solution += '2. Use Amazon RDS for storing traffic data, citizen services, and IoT data.\n';
+                solution += '3. Implement Amazon CloudFront for efficient delivery of city-related information.\n';
+                solution += '4. Store IoT sensor data and analytics in Amazon S3 for scalability.\n';
+                solution += '5. Set up Amazon Route 53 for DNS management with failover for city services.\n';
+                solution += '6. Enable Auto Scaling to handle fluctuating data and demand during peak hours.\n';
+                solution += '7. Use Amazon Cognito for secure authentication of city service users (citizens, admins).\n';
+                solution += '8. Use AWS WAF for security protection against IoT and web-based attacks.\n';
+                solution += '9. Leverage IAM for securing different roles (citizens, city officials, service admins).\n';
+                solution += '10. Implement disaster recovery strategies using RDS backups and S3 snapshots.\n';
+                solution += '11. Monitor city service performance using Amazon CloudWatch to ensure reliability.\n';
+                solution += '12. Use AWS Cost Explorer for tracking and optimizing operational costs for smart city infrastructure.\n';
+                solution += '13. Enable Multi-AZ for failover and disaster recovery of critical city data.\n';
+            }
+
+            if (shoppingMall && storeManagement && customerData && security && scalability && backupAndRecovery && adminSection && costEfficiency) {
+                solution += '1. Use Amazon Elastic Beanstalk for managing retail and shopping mall applications.\n';
+                solution += '2. Utilize Amazon RDS (MySQL/PostgreSQL/Aurora) for storing customer data and inventory.\n';
+                solution += '3. Implement Amazon CloudFront for fast delivery of product images and descriptions.\n';
+                solution += '4. Store product images, catalogs, and assets in Amazon S3 for scalability and durability.\n';
+                solution += '5. Set up Amazon Route 53 for DNS management and failover to ensure uptime.\n';
+                solution += '6. Enable Auto Scaling for handling customer traffic spikes during shopping seasons.\n';
+                solution += '7. Use Amazon Cognito for customer authentication and shopping cart management.\n';
+                solution += '8. Configure AWS WAF to protect the malls website from security threats and attacks.\n';
+                solution += '9. Leverage AWS IAM for user roles such as admins, store managers, and support staff.\n';
+                solution += '10. Implement backups and snapshots using Amazon RDS and S3 for secure product data.\n';
+                solution += '11. Monitor traffic and store performance with Amazon CloudWatch for continuous improvement.\n';
+                solution += '12. Use AWS Cost Explorer to optimize shopping mall infrastructure spending.\n';
+                solution += '13. Enable Multi-AZ deployment for database redundancy and high availability.\n';
+            }
+            if (backupAndRecovery && adminSection) {
+                solution += '1. Use Amazon Elastic Beanstalk for managing retail and shopping mall applications.\n';
+                solution += '2. Utilize Amazon RDS (MySQL/PostgreSQL/Aurora) for storing customer data and inventory.\n';
+                solution += '3. Implement Amazon CloudFront for fast delivery of product images and descriptions.\n';
+                solution += '4. Store product images, catalogs, and assets in Amazon S3 for scalability and durability.\n';
+                solution += '5. Set up Amazon Route 53 for DNS management and failover to ensure uptime.\n';
+                solution += '6. Enable Auto Scaling for handling customer traffic spikes during shopping seasons.\n';
+                solution += '7. Use Amazon Cognito for customer authentication and shopping cart management.\n';
+                solution += '8. Configure AWS WAF to protect the malls website from security threats and attacks.\n';
+                solution += '9. Leverage AWS IAM for user roles such as admins, store managers, and support staff.\n';
+                solution += '10. Implement backups and snapshots using Amazon RDS and S3 for secure product data.\n';
+                solution += '11. Monitor traffic and store performance with Amazon CloudWatch for continuous improvement.\n';
+                solution += '12. Use AWS Cost Explorer to optimize shopping mall infrastructure spending.\n';
+                solution += '13. Enable Multi-AZ deployment for database redundancy and high availability.\n';
+            }
+            if (college && department && section && groups && scalability && backupAndRecovery && adminSection && costEfficiency) {
+                solution += '1. Use Amazon Elastic Beanstalk for easy deployment and management of web applications.\n';
+                solution += '2. Utilize Amazon RDS (MySQL/PostgreSQL/Aurora) for scalable, managed relational databases.\n';
+                solution += '3. Implement Amazon CloudFront for fast content delivery and caching of static assets.\n';
+                solution += '4. Store static assets in Amazon S3 for scalability, durability, and low-cost storage.\n';
+                solution += '5. Set up Amazon Route 53 for DNS management with failover and health checks.\n';
+                solution += '6. Enable Auto Scaling to automatically scale EC2 instances based on demand.\n';
+                solution += '7. Use Amazon Cognito for user authentication and role-based access control (students, faculty, admin).\n';
+                solution += '8. Configure AWS WAF to protect web applications from common threats like SQL injection.\n';
+                solution += '9. Leverage AWS IAM for fine-grained permissions and secure access control for different user groups.\n';
+                solution += '10. Implement automated backups and snapshots using Amazon RDS and S3 for data durability.\n';
+                solution += '11. Monitor system performance and usage with Amazon CloudWatch for proactive management.\n';
+                solution += '12. Use AWS Cost Explorer to track and optimize cloud spending based on usage.\n';
+                solution += '13. Enable Multi-AZ and Cross-Region replication for disaster recovery and high availability.\n';
+            }
+
+
+
+            if (hospital && patientManagement && healthcareData && security && scalability && backupAndRecovery && adminSection && costEfficiency) {
+                solution += '1. Use Amazon Elastic Beanstalk for managing hospital management applications.\n';
+                solution += '2. Utilize Amazon RDS (MySQL/PostgreSQL/Aurora) for patient records and healthcare data.\n';
+                solution += '3. Implement Amazon CloudFront for quick delivery of healthcare information and documents.\n';
+                solution += '4. Store medical records and assets securely in Amazon S3.\n';
+                solution += '5. Set up Amazon Route 53 for DNS management with failover and health checks.\n';
+                solution += '6. Enable Auto Scaling for hospital applications during peak hours or events.\n';
+                solution += '7. Use Amazon Cognito for patient authentication and secure access management.\n';
+                solution += '8. Configure AWS WAF to protect hospital applications from common security threats.\n';
+                solution += '9. Leverage AWS IAM for secure access control between departments (admin, doctors, nurses).\n';
+                solution += '10. Implement automated backups for critical healthcare data with RDS and S3.\n';
+                solution += '11. Monitor healthcare systems performance with Amazon CloudWatch for system uptime.\n';
+                solution += '12. Use AWS Cost Explorer for cost optimization in healthcare infrastructure.\n';
+                solution += '13. Enable Multi-AZ for high availability and disaster recovery of critical medical data.\n';
+            }
+
+
+
+            if (eCommerce && hosting && costEfficien) {
+                solution += '1. Use Amazon Elastic Beanstalk for easy deployment and management of the application.\n';
+                solution += '2. Utilize Amazon RDS for a managed relational database that scales as needed.\n';
+                solution += '3. Implement Amazon CloudFront for fast content delivery and caching.\n';
+                solution += '4. Store static assets in Amazon S3 for scalability and durability.\n';
+                solution += '5. Set up Amazon Route 53 for DNS management with health checks.\n';
+                solution += '6. Enable Auto Scaling to handle traffic spikes effectively.\n';
+            }
+
+            if (college && department && section && groups && scalability && backupAndRecovery && adminSection && costEfficienc) {
+                solution += '1. Use Amazon Elastic Beanstalk for easy deployment and management of web applications.\n';
+                solution += '2. Utilize Amazon RDS (MySQL/PostgreSQL/Aurora) for scalable, managed relational databases.\n';
+                solution += '3. Implement Amazon CloudFront for fast content delivery and caching of static assets.\n';
+                solution += '4. Store static assets in Amazon S3 for scalability, durability, and low-cost storage.\n';
+                solution += '5. Set up Amazon Route 53 for DNS management with failover and health checks.\n';
+                solution += '6. Enable Auto Scaling to automatically scale EC2 instances based on demand.\n';
+                solution += '7. Use Amazon Cognito for user authentication and role-based access control (students, faculty, admin).\n';
+                solution += '8. Configure AWS WAF to protect web applications from common threats like SQL injection.\n';
+                solution += '9. Leverage AWS IAM for fine-grained permissions and secure access control for different user groups.\n';
+                solution += '10. Implement automated backups and snapshots using Amazon RDS and S3 for data durability.\n';
+                solution += '11. Monitor system performance and usage with Amazon CloudWatch for proactive management.\n';
+                solution += '12. Use AWS Cost Explorer to track and optimize cloud spending based on usage.\n';
+                solution += '13. Enable Multi-AZ and Cross-Region replication for disaster recovery and high availability.\n';
+
+            }
+            if (scalability) {
+                solution += '1. Use Amazon Elastic Beanstalk for easy deployment and management of web applications.\n';
+                solution += '2. Utilize Amazon RDS (MySQL/PostgreSQL/Aurora) for scalable, managed relational databases.\n';
+                solution += '3. Implement Amazon CloudFront for fast content delivery and caching of static assets.\n';
+                solution += '4. Store static assets in Amazon S3 for scalability, durability, and low-cost storage.\n';
+                solution += '5. Set up Amazon Route 53 for DNS management with failover and health checks.\n';
+                solution += '6. Enable Auto Scaling to automatically scale EC2 instances based on demand.\n';
+                solution += '7. Use Amazon Cognito for user authentication and role-based access control (students, faculty, admin).\n';
+                solution += '8. Configure AWS WAF to protect web applications from common threats like SQL injection.\n';
+                solution += '9. Leverage AWS IAM for fine-grained permissions and secure access control for different user groups.\n';
+                solution += '10. Implement automated backups and snapshots using Amazon RDS and S3 for data durability.\n';
+                solution += '11. Monitor system performance and usage with Amazon CloudWatch for proactive management.\n';
+                solution += '12. Use AWS Cost Explorer to track and optimize cloud spending based on usage.\n';
+                solution += '13. Enable Multi-AZ and Cross-Region replication for disaster recovery and high availability.\n';
+
+            }
+
+            if (college) {
+                solution += '1. Use Amazon Elastic Beanstalk for easy deployment and management of web applications.\n';
+                solution += '2. Utilize Amazon RDS (MySQL/PostgreSQL/Aurora) for scalable, managed relational databases.\n';
+                solution += '3. Implement Amazon CloudFront for fast content delivery and caching of static assets.\n';
+                solution += '4. Store static assets in Amazon S3 for scalability, durability, and low-cost storage.\n';
+                solution += '5. Set up Amazon Route 53 for DNS management with failover and health checks.\n';
+                solution += '6. Enable Auto Scaling to automatically scale EC2 instances based on demand.\n';
+                solution += '7. Use Amazon Cognito for user authentication and role-based access control (students, faculty, admin).\n';
+                solution += '8. Configure AWS WAF to protect web applications from common threats like SQL injection.\n';
+                solution += '9. Leverage AWS IAM for fine-grained permissions and secure access control for different user groups.\n';
+                solution += '10. Implement automated backups and snapshots using Amazon RDS and S3 for data durability.\n';
+                solution += '11. Monitor system performance and usage with Amazon CloudWatch for proactive management.\n';
+                solution += '12. Use AWS Cost Explorer to track and optimize cloud spending based on usage.\n';
+                solution += '13. Enable Multi-AZ and Cross-Region replication for disaster recovery and high availability.\n';
+
+            }
+
+            if (secure) {
+                solution += '7. Use AWS Identity and Access Management (IAM) for fine-grained access control.\n';
+                solution += '8. Implement AWS WAF (Web Application Firewall) to protect against common web exploits.\n';
+                solution += '9. Use Amazon GuardDuty for continuous security monitoring.\n';
+                solution += '10. Enable encryption for data at rest and in transit using AWS Key Management Service (KMS).\n';
+            }
+
+            if (highAvailability) {
+                solution += '11. Deploy the application across multiple Availability Zones for redundancy.\n';
+                solution += '12. Use Elastic Load Balancing (ELB) to distribute incoming traffic evenly.\n';
+                solution += '13. Utilize Amazon Aurora for a highly available and durable database solution.\n';
+                solution += '14. Set up Amazon ElastiCache for caching frequently accessed data to improve performance.\n';
+            }
+
+            if (trafficSpikes) {
+                solution += '15. Implement AWS Lambda for serverless processing to handle sudden bursts of traffic.\n';
+                solution += '16. Use Amazon API Gateway to manage APIs and scale automatically.\n';
+                solution += '17. Enable CloudFront to cache content at edge locations, reducing latency.\n';
+            }
+
+            if (costEffective) {
+                solution += '18. Use AWS Cost Explorer to monitor and analyze spending patterns.\n';
+                solution += '19. Implement Reserved Instances for long-term savings on EC2 and RDS instances.\n';
+                solution += '20. Use S3 lifecycle policies to automatically transition data to lower-cost storage classes.\n';
+            }
+
+            if (performance) {
+                solution += '21. Optimize application performance using Amazon CloudWatch for monitoring and alerting.\n';
+                solution += '22. Utilize AWS Global Accelerator to improve availability and performance of applications with global users.\n';
+            }
+            if (website) {
+                solution += '1. Host your website on Amazon S3.\n';
+                solution += '2. Use Amazon CloudFront for CDN.\n';
+                solution += '3. Implement AWS Certificate Manager for SSL.\n';
+                solution += '4. Use Amazon Route 53 for domain registration and routing.\n';
+                solution += '5. Set up AWS Amplify for full-stack development.\n';
+            }
+            if (eCommerce && highAvailability && secure) {
+                solution += '1. Use Amazon Elastic Beanstalk for application deployment with built-in load balancing.\n';
+                solution += '2. Utilize Amazon RDS with Multi-AZ deployments for a highly available database.\n';
+                solution += '3. Implement AWS Shield for DDoS protection.\n';
+                solution += '4. Use AWS WAF to protect your application from common web exploits.\n';
+                solution += '5. Set up AWS CloudTrail for logging and monitoring API calls to enhance security.\n';
+            }
+
+            if (website && trafficSpikes && costEffective) {
+                solution += '1. Host your website on Amazon S3 with static website hosting enabled.\n';
+                solution += '2. Use Amazon CloudFront to distribute content globally and cache it at edge locations.\n';
+                solution += '3. Implement AWS Lambda to run serverless functions during traffic spikes, reducing costs.\n';
+                solution += '4. Enable AWS Auto Scaling to manage traffic automatically based on demand.\n';
+            }
+
+            if (performance && trafficSpikes && costEffective) {
+                solution += '1. Use Amazon EC2 Auto Scaling to manage instance capacity and maintain performance.\n';
+                solution += '2. Utilize Amazon ElastiCache for caching frequently accessed data and reducing latency.\n';
+                solution += '3. Optimize application performance using Amazon CloudWatch to monitor key metrics.\n';
+                solution += '4. Implement S3 Intelligent-Tiering to optimize storage costs based on usage patterns.\n';
+            }
+
+            if (secure && highAvailability && performance) {
+                solution += '1. Implement AWS Secrets Manager to securely manage sensitive information like API keys.\n';
+                solution += '2. Use Amazon RDS with read replicas to enhance performance while ensuring data redundancy.\n';
+                solution += '3. Set up Elastic Load Balancing (ELB) to distribute incoming traffic across healthy targets.\n';
+                solution += '4. Enable AWS Global Accelerator to improve application availability and performance across different regions.\n';
+            }
+
+            if (eCommerce && performance && website) {
+                solution += '1. Use Amazon Elastic Beanstalk for web application deployment with auto-scaling capabilities.\n';
+                solution += '2. Optimize your database using Amazon DynamoDB for fast and predictable performance.\n';
+                solution += '3. Implement Amazon S3 for storing and serving images and static content efficiently.\n';
+                solution += '4. Utilize AWS Amplify for a full-stack web application with backend services.\n';
+            }
+
+            // Fallback if no specific solutions were added
+            if (!solution.includes('1.')) {
+                solution += 'No specific solution found. Please provide more details or check your keywords.';
+            }
+
+
+            solutionDiv.innerHTML = solution;
         }
     </script>
 </body>
+
 </html>
