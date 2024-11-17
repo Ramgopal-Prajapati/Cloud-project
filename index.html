@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS Architecture Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+        h1 {
+            text-align: center;
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+            margin: 10px 0;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #output {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>AWS Architecture Diagram Generator</h1>
+    <textarea id="prompt" placeholder="Enter your AWS architecture requirements..."></textarea>
+    <button onclick="generateCloudcraftLink()">Generate Diagram</button>
+    <div id="output"></div>
+
+    <script>
+        function generateCloudcraftLink() {
+            const prompt = document.getElementById('prompt').value;
+            const outputDiv = document.getElementById('output');
+
+            if (!prompt) {
+                outputDiv.innerHTML = 'Please enter a prompt.';
+                return;
+            }
+
+            // Here we create a basic Cloudcraft URL
+            // For demonstration, we will append the prompt to the URL.
+            const baseCloudcraftUrl = 'https://cloudcraft.co/diagram/create?prompt=';
+            const encodedPrompt = encodeURIComponent(prompt);
+            const cloudcraftUrl = `${baseCloudcraftUrl}${encodedPrompt}`;
+
+            outputDiv.innerHTML = `
+                <h3>Generated Cloudcraft Diagram Link:</h3>
+                <a href="${cloudcraftUrl}" target="_blank">${cloudcraftUrl}</a>
+            `;
+        }
+    </script>
+</body>
+</html>
