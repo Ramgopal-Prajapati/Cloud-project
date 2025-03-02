@@ -31,7 +31,7 @@
         }
 
         .container {
-            background-color: rgba(226, 236, 128, 0);
+            background-color: rgba(226, 236, 128, 0.89);
             border-radius: 10px;
             padding: 20px;
             margin: 215px auto;
@@ -86,6 +86,7 @@
         .examples {
             margin-top: 40px;
             padding: 20px;
+            margin-left: -430px;
             border: 1px solid #ccc;
             border-radius: 5px;
             background-color: rgba(255, 255, 255, 0.9);
@@ -113,13 +114,35 @@
             background-color: rgba(255, 255, 255, 0.9);
         }
 
+        .login-section {
+            margin-top: 30px;
+            text-align: center;
+          }
+      
+          .login-section a {
+            color: #ff9900;
+            text-decoration: none;
+            font-weight: bold;
+          }
+      
+          .login-section a:hover {
+            text-decoration: underline;
+          }
+      
+          footer {
+            margin-top: 30px;
+            text-align: center;
+            color: #777;
+          }
         @media (max-width: 600px) {
             nav {
                 flex-direction: column;
                 align-items: flex-start;
                 font-size: 12px;
             }
-
+            .examples {
+                margin-left: 0px;
+            }
             h1 {
                 text-align: center;
                 background-color: #c29d0f;
@@ -132,7 +155,7 @@
             }
 
             .container {
-                background-color: rgba(226, 236, 128, 0);
+                background-color: rgba(226, 236, 128, 0.89);
                 border-radius: 31px;
                 padding: 33px;
                 margin: 95px auto;
@@ -149,13 +172,11 @@
 
 <body>
     <header>
-        <nav>
-            <h2 style="margin: 10;">Welcome to AWS Cloud Solutions</h2>
-        </nav>
+       
     </header>
 
     <div class="container">
-        <h1>AWS Cloud Solution Generator</h1>
+        <h1> Welcome To AWS Cloud Solution Generator</h1>
         <textarea id="prompt" placeholder="Describe your AWS cloud problem here..."></textarea>
         <button onclick="generateSolution()">Generate Solution</button>
         <div id="solution"></div>
@@ -489,402 +510,164 @@
 
     </div>
 
-    <script>
-        function generateSolution() {
-            const prompt = document.getElementById('prompt').value;
-            const solutionDiv = document.getElementById('solution');
+    <div class="login-section">
+        <p>Need to manage your AWS resources? <a href="https://aws.amazon.com/console/" target="_blank">Login to AWS</a></p>
+      </div>
+  
+      <footer>
+        &copy; 2023 Cloud Solution Generator. All rights reserved.
+      </footer>
+    </div>
 
-            if (!prompt) {
-                solutionDiv.innerHTML = 'Please enter a problem description.';
-                return;
-            }
-
-            let solution = 'Proposed Solution:\n\n';
-            const keywords = prompt.toLowerCase();
-
-            const eCommerce = keywords.includes("e-commerce");
-            const college = keywords.includes("college");
-            const department = keywords.includes("department");
-            const section = keywords.includes("section");
-            const groups = keywords.includes("groups");
-            const scalability = keywords.includes("scalability");
-            const backupAndRecovery = keywords.includes("backupAndRecovery");
-            const adminSection = keywords.includes("adminSection");
-            const costEfficienc = keywords.includes("costEfficienc");
-
-
-            const website = keywords.includes("website");
-            const hosting = keywords.includes("host");
-            const secure = keywords.includes("secure");
-            const highAvailability = keywords.includes("high availability") || keywords.includes("fault tolerant");
-            const trafficSpikes = keywords.includes("traffic spikes");
-            const costEffective = keywords.includes("cost-effective");
-            const performance = keywords.includes("performance");
-            const optimization = keywords.includes("cost optimized") || keywords.includes("optimization");
-
-            const hospital = keywords.includes("hospital");
-            const patientManagement = keywords.includes("patientManagement");
-            const healthcareData = keywords.includes("healthcareData");
-            const security = keywords.includes("security");
-            const scalabilitys = keywords.includes("scalabilitys");
-            const shoppingMall = keywords.includes("shoppingMall");
-            const storeManagement = keywords.includes("storeManagement");
-            const customerData = keywords.includes("customerData");
-
-            const smartCity = keywords.includes("smartCity");
-            const IoTDevices = keywords.includes("IoTDevices");
-            const cityManagement = keywords.includes("cityManagement");
-
-            const colony = keywords.includes("colony");
-            const residentManagement = keywords.includes("residentManagement");
-            const communityData = keywords.includes("communityData");
-
-            const bigMarket = keywords.includes("bigMarket");
-            const vendorManagement = keywords.includes("vendorManagement");
-            const inventoryData = keywords.includes("inventoryData");
-
-            const startup = keywords.includes("startup");
-            const productDevelopment = keywords.includes("productDevelopment");
-            const databaseApplication = keywords.includes("databaseApplication");
-            const database = keywords.includes("database");
-
-
-            if (databaseApplication) {
-                solution += '1. Use Amazon RDS (MySQL/PostgreSQL/Aurora) to deploy and manage relational databases.\n';
-                solution += '2. Implement Amazon DynamoDB for highly scalable NoSQL database solutions.\n';
-                solution += '3. Set up Amazon S3 for storing database backups and data archives.\n';
-                solution += '4. Use Amazon Elasticache to improve database performance with caching.\n';
-                solution += '5. Set up Amazon Route 53 for DNS management and routing to database instances.\n';
-                solution += '6. Enable Auto Scaling for EC2 instances to handle database traffic spikes and growth.\n';
-                solution += '7. Use AWS IAM for fine-grained access control and secure database access.\n';
-                solution += '8. Implement AWS WAF to protect against SQL injection and other database attacks.\n';
-                solution += '9. Use Amazon CloudWatch for database performance monitoring and alerting.\n';
-                solution += '10. Implement Multi-AZ for high availability and automatic failover for RDS databases.\n';
-                solution += '11. Enable automated backups for RDS and snapshots for disaster recovery.\n';
-                solution += '12. Use Amazon Aurora Global Databases for cross-region database replication and failover.\n';
-                solution += '13. Leverage AWS Cost Explorer to manage and optimize database-related cloud costs.\n';
-            }
-            if (database) {
-                solution += '1. Use Amazon RDS (MySQL/PostgreSQL/Aurora) to deploy and manage relational databases.\n';
-                solution += '2. Implement Amazon DynamoDB for highly scalable NoSQL database solutions.\n';
-                solution += '3. Set up Amazon S3 for storing database backups and data archives.\n';
-                solution += '4. Use Amazon Elasticache to improve database performance with caching.\n';
-                solution += '5. Set up Amazon Route 53 for DNS management and routing to database instances.\n';
-                solution += '6. Enable Auto Scaling for EC2 instances to handle database traffic spikes and growth.\n';
-                solution += '7. Use AWS IAM for fine-grained access control and secure database access.\n';
-                solution += '8. Implement AWS WAF to protect against SQL injection and other database attacks.\n';
-                solution += '9. Use Amazon CloudWatch for database performance monitoring and alerting.\n';
-                solution += '10. Implement Multi-AZ for high availability and automatic failover for RDS databases.\n';
-                solution += '11. Enable automated backups for RDS and snapshots for disaster recovery.\n';
-                solution += '12. Use Amazon Aurora Global Databases for cross-region database replication and failover.\n';
-                solution += '13. Leverage AWS Cost Explorer to manage and optimize database-related cloud costs.\n';
-            }
-            if (database && website) {
-                solution += '2. Use Amazon CloudFront for CDN.\n';
-                solution += '3. Implement AWS Certificate Manager for SSL.\n';
-                solution += '4. Use Amazon Route 53 for domain registration and routing.\n';
-                solution += '5. Set up AWS Amplify for full-stack development.\n';
-                solution += '1. Host your website on Amazon S3.\n';
-                solution += '1. Use Amazon RDS (MySQL/PostgreSQL/Aurora) to deploy and manage relational databases.\n';
-                solution += '2. Implement Amazon DynamoDB for highly scalable NoSQL database solutions.\n';
-                solution += '3. Set up Amazon S3 for storing database backups and data archives.\n';
-                solution += '4. Use Amazon Elasticache to improve database performance with caching.\n';
-                solution += '5. Set up Amazon Route 53 for DNS management and routing to database instances.\n';
-                solution += '6. Enable Auto Scaling for EC2 instances to handle database traffic spikes and growth.\n';
-                solution += '7. Use AWS IAM for fine-grained access control and secure database access.\n';
-                solution += '8. Implement AWS WAF to protect against SQL injection and other database attacks.\n';
-                solution += '9. Use Amazon CloudWatch for database performance monitoring and alerting.\n';
-                solution += '10. Implement Multi-AZ for high availability and automatic failover for RDS databases.\n';
-                solution += '11. Enable automated backups for RDS and snapshots for disaster recovery.\n';
-                solution += '12. Use Amazon Aurora Global Databases for cross-region database replication and failover.\n';
-                solution += '13. Leverage AWS Cost Explorer to manage and optimize database-related cloud costs.\n';
-            }
-
-
-            if (startup && productDevelopment && customerData && scalability && backupAndRecovery && security && costEfficiency) {
-                solution += '1. Use Amazon Elastic Beanstalk to deploy and manage startup applications.\n';
-                solution += '2. Utilize Amazon RDS for storing customer data and app data.\n';
-                solution += '3. Implement Amazon CloudFront for fast content delivery to customers.\n';
-                solution += '4. Store marketing materials, media, and other assets in Amazon S3.\n';
-                solution += '5. Set up Amazon Route 53 for DNS management for your startup site.\n';
-                solution += '6. Enable Auto Scaling to handle traffic spikes as the startup grows.\n';
-                solution += '7. Use Amazon Cognito for user authentication and secure access.\n';
-                solution += '8. Implement AWS WAF for protection against malicious traffic and attacks.\n';
-                solution += '9. Leverage AWS IAM for managing startup access to different services and resources.\n';
-                solution += '10. Implement backup and disaster recovery using RDS snapshots and S3.\n';
-                solution += '11. Monitor the performance and usage of your startup platform with Amazon CloudWatch.\n';
-                solution += '12. Use AWS Cost Explorer to manage and optimize your cloud spending.\n';
-                solution += '13. Enable Multi-AZ for high availability and failover protection.\n';
-            }
-            if (bigMarket && vendorManagement && inventoryData && security && scalability && backupAndRecovery && adminSection && costEfficiency) {
-                solution += '1. Use Amazon Elastic Beanstalk for managing large-scale market and vendor applications.\n';
-                solution += '2. Utilize Amazon RDS for managing vendor and inventory databases.\n';
-                solution += '3. Implement Amazon CloudFront for fast delivery of product and marketing content.\n';
-                solution += '4. Store product images, descriptions, and documents in Amazon S3.\n';
-                solution += '5. Set up Amazon Route 53 for DNS management for market-related services.\n';
-                solution += '6. Enable Auto Scaling to adjust based on traffic volume during promotions or sales.\n';
-                solution += '7. Use Amazon Cognito for vendor authentication and secure access management.\n';
-                solution += '8. Use AWS WAF to protect the markets web services from potential cyber threats.\n';
-                solution += '9. Leverage AWS IAM for managing permissions between vendors, admins, and staff.\n';
-                solution += '10. Implement backup strategies using RDS snapshots and S3 backups for inventory protection.\n';
-                solution += '11. Monitor the performance of the market’s applications and inventory systems with CloudWatch.\n';
-                solution += '12. Use AWS Cost Explorer to optimize the marketplaces cloud expenses.\n';
-                solution += '13. Enable Multi-AZ and Cross-Region replication for database redundancy and high availability.\n';
-            }
-            if (colony && residentManagement && communityData && security && scalability && backupAndRecovery && adminSection && costEfficiency) {
-                solution += '1. Use Amazon Elastic Beanstalk for managing neighborhood and resident applications.\n';
-                solution += '2. Use Amazon RDS for managing community data and communications.\n';
-                solution += '3. Implement Amazon CloudFront for fast delivery of neighborhood updates and announcements.\n';
-                solution += '4. Store documents and resident information in Amazon S3.\n';
-                solution += '5. Set up Amazon Route 53 for DNS management for neighborhood portals and websites.\n';
-                solution += '6. Enable Auto Scaling to accommodate increasing usage of neighborhood platforms.\n';
-                solution += '7. Use Amazon Cognito for resident authentication and role-based access control.\n';
-                solution += '8. Use AWS WAF to secure neighborhood portals from threats and unauthorized access.\n';
-                solution += '9. Implement AWS IAM for secure access to community data and portals.\n';
-                solution += '10. Implement automated backups and snapshots to protect community data in RDS and S3.\n';
-                solution += '11. Use Amazon CloudWatch to monitor the performance of neighborhood applications.\n';
-                solution += '12. Optimize costs with AWS Cost Explorer for community management platforms.\n';
-                solution += '13. Enable Multi-AZ and Cross-Region replication for disaster recovery of community data.\n';
-            }
-
-            if (smartCity && IoTDevices && cityManagement && scalability && backupAndRecovery && security && costEfficiency) {
-                solution += '1. Use Amazon Elastic Beanstalk to manage smart city applications and services.\n';
-                solution += '2. Use Amazon RDS for storing traffic data, citizen services, and IoT data.\n';
-                solution += '3. Implement Amazon CloudFront for efficient delivery of city-related information.\n';
-                solution += '4. Store IoT sensor data and analytics in Amazon S3 for scalability.\n';
-                solution += '5. Set up Amazon Route 53 for DNS management with failover for city services.\n';
-                solution += '6. Enable Auto Scaling to handle fluctuating data and demand during peak hours.\n';
-                solution += '7. Use Amazon Cognito for secure authentication of city service users (citizens, admins).\n';
-                solution += '8. Use AWS WAF for security protection against IoT and web-based attacks.\n';
-                solution += '9. Leverage IAM for securing different roles (citizens, city officials, service admins).\n';
-                solution += '10. Implement disaster recovery strategies using RDS backups and S3 snapshots.\n';
-                solution += '11. Monitor city service performance using Amazon CloudWatch to ensure reliability.\n';
-                solution += '12. Use AWS Cost Explorer for tracking and optimizing operational costs for smart city infrastructure.\n';
-                solution += '13. Enable Multi-AZ for failover and disaster recovery of critical city data.\n';
-            }
-            if (smartCity) {
-                solution += '1. Use Amazon Elastic Beanstalk to manage smart city applications and services.\n';
-                solution += '2. Use Amazon RDS for storing traffic data, citizen services, and IoT data.\n';
-                solution += '3. Implement Amazon CloudFront for efficient delivery of city-related information.\n';
-                solution += '4. Store IoT sensor data and analytics in Amazon S3 for scalability.\n';
-                solution += '5. Set up Amazon Route 53 for DNS management with failover for city services.\n';
-                solution += '6. Enable Auto Scaling to handle fluctuating data and demand during peak hours.\n';
-                solution += '7. Use Amazon Cognito for secure authentication of city service users (citizens, admins).\n';
-                solution += '8. Use AWS WAF for security protection against IoT and web-based attacks.\n';
-                solution += '9. Leverage IAM for securing different roles (citizens, city officials, service admins).\n';
-                solution += '10. Implement disaster recovery strategies using RDS backups and S3 snapshots.\n';
-                solution += '11. Monitor city service performance using Amazon CloudWatch to ensure reliability.\n';
-                solution += '12. Use AWS Cost Explorer for tracking and optimizing operational costs for smart city infrastructure.\n';
-                solution += '13. Enable Multi-AZ for failover and disaster recovery of critical city data.\n';
-            }
-
-            if (shoppingMall && storeManagement && customerData && security && scalability && backupAndRecovery && adminSection && costEfficiency) {
-                solution += '1. Use Amazon Elastic Beanstalk for managing retail and shopping mall applications.\n';
-                solution += '2. Utilize Amazon RDS (MySQL/PostgreSQL/Aurora) for storing customer data and inventory.\n';
-                solution += '3. Implement Amazon CloudFront for fast delivery of product images and descriptions.\n';
-                solution += '4. Store product images, catalogs, and assets in Amazon S3 for scalability and durability.\n';
-                solution += '5. Set up Amazon Route 53 for DNS management and failover to ensure uptime.\n';
-                solution += '6. Enable Auto Scaling for handling customer traffic spikes during shopping seasons.\n';
-                solution += '7. Use Amazon Cognito for customer authentication and shopping cart management.\n';
-                solution += '8. Configure AWS WAF to protect the malls website from security threats and attacks.\n';
-                solution += '9. Leverage AWS IAM for user roles such as admins, store managers, and support staff.\n';
-                solution += '10. Implement backups and snapshots using Amazon RDS and S3 for secure product data.\n';
-                solution += '11. Monitor traffic and store performance with Amazon CloudWatch for continuous improvement.\n';
-                solution += '12. Use AWS Cost Explorer to optimize shopping mall infrastructure spending.\n';
-                solution += '13. Enable Multi-AZ deployment for database redundancy and high availability.\n';
-            }
-            if (backupAndRecovery && adminSection) {
-                solution += '1. Use Amazon Elastic Beanstalk for managing retail and shopping mall applications.\n';
-                solution += '2. Utilize Amazon RDS (MySQL/PostgreSQL/Aurora) for storing customer data and inventory.\n';
-                solution += '3. Implement Amazon CloudFront for fast delivery of product images and descriptions.\n';
-                solution += '4. Store product images, catalogs, and assets in Amazon S3 for scalability and durability.\n';
-                solution += '5. Set up Amazon Route 53 for DNS management and failover to ensure uptime.\n';
-                solution += '6. Enable Auto Scaling for handling customer traffic spikes during shopping seasons.\n';
-                solution += '7. Use Amazon Cognito for customer authentication and shopping cart management.\n';
-                solution += '8. Configure AWS WAF to protect the malls website from security threats and attacks.\n';
-                solution += '9. Leverage AWS IAM for user roles such as admins, store managers, and support staff.\n';
-                solution += '10. Implement backups and snapshots using Amazon RDS and S3 for secure product data.\n';
-                solution += '11. Monitor traffic and store performance with Amazon CloudWatch for continuous improvement.\n';
-                solution += '12. Use AWS Cost Explorer to optimize shopping mall infrastructure spending.\n';
-                solution += '13. Enable Multi-AZ deployment for database redundancy and high availability.\n';
-            }
-            if (college && department && section && groups && scalability && backupAndRecovery && adminSection && costEfficiency) {
-                solution += '1. Use Amazon Elastic Beanstalk for easy deployment and management of web applications.\n';
-                solution += '2. Utilize Amazon RDS (MySQL/PostgreSQL/Aurora) for scalable, managed relational databases.\n';
-                solution += '3. Implement Amazon CloudFront for fast content delivery and caching of static assets.\n';
-                solution += '4. Store static assets in Amazon S3 for scalability, durability, and low-cost storage.\n';
-                solution += '5. Set up Amazon Route 53 for DNS management with failover and health checks.\n';
-                solution += '6. Enable Auto Scaling to automatically scale EC2 instances based on demand.\n';
-                solution += '7. Use Amazon Cognito for user authentication and role-based access control (students, faculty, admin).\n';
-                solution += '8. Configure AWS WAF to protect web applications from common threats like SQL injection.\n';
-                solution += '9. Leverage AWS IAM for fine-grained permissions and secure access control for different user groups.\n';
-                solution += '10. Implement automated backups and snapshots using Amazon RDS and S3 for data durability.\n';
-                solution += '11. Monitor system performance and usage with Amazon CloudWatch for proactive management.\n';
-                solution += '12. Use AWS Cost Explorer to track and optimize cloud spending based on usage.\n';
-                solution += '13. Enable Multi-AZ and Cross-Region replication for disaster recovery and high availability.\n';
-            }
-
-
-
-            if (hospital && patientManagement && healthcareData && security && scalability && backupAndRecovery && adminSection && costEfficiency) {
-                solution += '1. Use Amazon Elastic Beanstalk for managing hospital management applications.\n';
-                solution += '2. Utilize Amazon RDS (MySQL/PostgreSQL/Aurora) for patient records and healthcare data.\n';
-                solution += '3. Implement Amazon CloudFront for quick delivery of healthcare information and documents.\n';
-                solution += '4. Store medical records and assets securely in Amazon S3.\n';
-                solution += '5. Set up Amazon Route 53 for DNS management with failover and health checks.\n';
-                solution += '6. Enable Auto Scaling for hospital applications during peak hours or events.\n';
-                solution += '7. Use Amazon Cognito for patient authentication and secure access management.\n';
-                solution += '8. Configure AWS WAF to protect hospital applications from common security threats.\n';
-                solution += '9. Leverage AWS IAM for secure access control between departments (admin, doctors, nurses).\n';
-                solution += '10. Implement automated backups for critical healthcare data with RDS and S3.\n';
-                solution += '11. Monitor healthcare systems performance with Amazon CloudWatch for system uptime.\n';
-                solution += '12. Use AWS Cost Explorer for cost optimization in healthcare infrastructure.\n';
-                solution += '13. Enable Multi-AZ for high availability and disaster recovery of critical medical data.\n';
-            }
-
-
-
-            if (eCommerce && hosting && costEfficien) {
-                solution += '1. Use Amazon Elastic Beanstalk for easy deployment and management of the application.\n';
-                solution += '2. Utilize Amazon RDS for a managed relational database that scales as needed.\n';
-                solution += '3. Implement Amazon CloudFront for fast content delivery and caching.\n';
-                solution += '4. Store static assets in Amazon S3 for scalability and durability.\n';
-                solution += '5. Set up Amazon Route 53 for DNS management with health checks.\n';
-                solution += '6. Enable Auto Scaling to handle traffic spikes effectively.\n';
-            }
-
-            if (college && department && section && groups && scalability && backupAndRecovery && adminSection && costEfficienc) {
-                solution += '1. Use Amazon Elastic Beanstalk for easy deployment and management of web applications.\n';
-                solution += '2. Utilize Amazon RDS (MySQL/PostgreSQL/Aurora) for scalable, managed relational databases.\n';
-                solution += '3. Implement Amazon CloudFront for fast content delivery and caching of static assets.\n';
-                solution += '4. Store static assets in Amazon S3 for scalability, durability, and low-cost storage.\n';
-                solution += '5. Set up Amazon Route 53 for DNS management with failover and health checks.\n';
-                solution += '6. Enable Auto Scaling to automatically scale EC2 instances based on demand.\n';
-                solution += '7. Use Amazon Cognito for user authentication and role-based access control (students, faculty, admin).\n';
-                solution += '8. Configure AWS WAF to protect web applications from common threats like SQL injection.\n';
-                solution += '9. Leverage AWS IAM for fine-grained permissions and secure access control for different user groups.\n';
-                solution += '10. Implement automated backups and snapshots using Amazon RDS and S3 for data durability.\n';
-                solution += '11. Monitor system performance and usage with Amazon CloudWatch for proactive management.\n';
-                solution += '12. Use AWS Cost Explorer to track and optimize cloud spending based on usage.\n';
-                solution += '13. Enable Multi-AZ and Cross-Region replication for disaster recovery and high availability.\n';
-
-            }
-            if (scalability) {
-                solution += '1. Use Amazon Elastic Beanstalk for easy deployment and management of web applications.\n';
-                solution += '2. Utilize Amazon RDS (MySQL/PostgreSQL/Aurora) for scalable, managed relational databases.\n';
-                solution += '3. Implement Amazon CloudFront for fast content delivery and caching of static assets.\n';
-                solution += '4. Store static assets in Amazon S3 for scalability, durability, and low-cost storage.\n';
-                solution += '5. Set up Amazon Route 53 for DNS management with failover and health checks.\n';
-                solution += '6. Enable Auto Scaling to automatically scale EC2 instances based on demand.\n';
-                solution += '7. Use Amazon Cognito for user authentication and role-based access control (students, faculty, admin).\n';
-                solution += '8. Configure AWS WAF to protect web applications from common threats like SQL injection.\n';
-                solution += '9. Leverage AWS IAM for fine-grained permissions and secure access control for different user groups.\n';
-                solution += '10. Implement automated backups and snapshots using Amazon RDS and S3 for data durability.\n';
-                solution += '11. Monitor system performance and usage with Amazon CloudWatch for proactive management.\n';
-                solution += '12. Use AWS Cost Explorer to track and optimize cloud spending based on usage.\n';
-                solution += '13. Enable Multi-AZ and Cross-Region replication for disaster recovery and high availability.\n';
-
-            }
-
-            if (college) {
-                solution += '1. Use Amazon Elastic Beanstalk for easy deployment and management of web applications.\n';
-                solution += '2. Utilize Amazon RDS (MySQL/PostgreSQL/Aurora) for scalable, managed relational databases.\n';
-                solution += '3. Implement Amazon CloudFront for fast content delivery and caching of static assets.\n';
-                solution += '4. Store static assets in Amazon S3 for scalability, durability, and low-cost storage.\n';
-                solution += '5. Set up Amazon Route 53 for DNS management with failover and health checks.\n';
-                solution += '6. Enable Auto Scaling to automatically scale EC2 instances based on demand.\n';
-                solution += '7. Use Amazon Cognito for user authentication and role-based access control (students, faculty, admin).\n';
-                solution += '8. Configure AWS WAF to protect web applications from common threats like SQL injection.\n';
-                solution += '9. Leverage AWS IAM for fine-grained permissions and secure access control for different user groups.\n';
-                solution += '10. Implement automated backups and snapshots using Amazon RDS and S3 for data durability.\n';
-                solution += '11. Monitor system performance and usage with Amazon CloudWatch for proactive management.\n';
-                solution += '12. Use AWS Cost Explorer to track and optimize cloud spending based on usage.\n';
-                solution += '13. Enable Multi-AZ and Cross-Region replication for disaster recovery and high availability.\n';
-
-            }
-
-            if (secure) {
-                solution += '7. Use AWS Identity and Access Management (IAM) for fine-grained access control.\n';
-                solution += '8. Implement AWS WAF (Web Application Firewall) to protect against common web exploits.\n';
-                solution += '9. Use Amazon GuardDuty for continuous security monitoring.\n';
-                solution += '10. Enable encryption for data at rest and in transit using AWS Key Management Service (KMS).\n';
-            }
-
-            if (highAvailability) {
-                solution += '11. Deploy the application across multiple Availability Zones for redundancy.\n';
-                solution += '12. Use Elastic Load Balancing (ELB) to distribute incoming traffic evenly.\n';
-                solution += '13. Utilize Amazon Aurora for a highly available and durable database solution.\n';
-                solution += '14. Set up Amazon ElastiCache for caching frequently accessed data to improve performance.\n';
-            }
-
-            if (trafficSpikes) {
-                solution += '15. Implement AWS Lambda for serverless processing to handle sudden bursts of traffic.\n';
-                solution += '16. Use Amazon API Gateway to manage APIs and scale automatically.\n';
-                solution += '17. Enable CloudFront to cache content at edge locations, reducing latency.\n';
-            }
-
-            if (costEffective) {
-                solution += '18. Use AWS Cost Explorer to monitor and analyze spending patterns.\n';
-                solution += '19. Implement Reserved Instances for long-term savings on EC2 and RDS instances.\n';
-                solution += '20. Use S3 lifecycle policies to automatically transition data to lower-cost storage classes.\n';
-            }
-
-            if (performance) {
-                solution += '21. Optimize application performance using Amazon CloudWatch for monitoring and alerting.\n';
-                solution += '22. Utilize AWS Global Accelerator to improve availability and performance of applications with global users.\n';
-            }
-            if (website) {
-                solution += '1. Host your website on Amazon S3.\n';
-                solution += '2. Use Amazon CloudFront for CDN.\n';
-                solution += '3. Implement AWS Certificate Manager for SSL.\n';
-                solution += '4. Use Amazon Route 53 for domain registration and routing.\n';
-                solution += '5. Set up AWS Amplify for full-stack development.\n';
-            }
-            if (eCommerce && highAvailability && secure) {
-                solution += '1. Use Amazon Elastic Beanstalk for application deployment with built-in load balancing.\n';
-                solution += '2. Utilize Amazon RDS with Multi-AZ deployments for a highly available database.\n';
-                solution += '3. Implement AWS Shield for DDoS protection.\n';
-                solution += '4. Use AWS WAF to protect your application from common web exploits.\n';
-                solution += '5. Set up AWS CloudTrail for logging and monitoring API calls to enhance security.\n';
-            }
-
-            if (website && trafficSpikes && costEffective) {
-                solution += '1. Host your website on Amazon S3 with static website hosting enabled.\n';
-                solution += '2. Use Amazon CloudFront to distribute content globally and cache it at edge locations.\n';
-                solution += '3. Implement AWS Lambda to run serverless functions during traffic spikes, reducing costs.\n';
-                solution += '4. Enable AWS Auto Scaling to manage traffic automatically based on demand.\n';
-            }
-
-            if (performance && trafficSpikes && costEffective) {
-                solution += '1. Use Amazon EC2 Auto Scaling to manage instance capacity and maintain performance.\n';
-                solution += '2. Utilize Amazon ElastiCache for caching frequently accessed data and reducing latency.\n';
-                solution += '3. Optimize application performance using Amazon CloudWatch to monitor key metrics.\n';
-                solution += '4. Implement S3 Intelligent-Tiering to optimize storage costs based on usage patterns.\n';
-            }
-
-            if (secure && highAvailability && performance) {
-                solution += '1. Implement AWS Secrets Manager to securely manage sensitive information like API keys.\n';
-                solution += '2. Use Amazon RDS with read replicas to enhance performance while ensuring data redundancy.\n';
-                solution += '3. Set up Elastic Load Balancing (ELB) to distribute incoming traffic across healthy targets.\n';
-                solution += '4. Enable AWS Global Accelerator to improve application availability and performance across different regions.\n';
-            }
-
-            if (eCommerce && performance && website) {
-                solution += '1. Use Amazon Elastic Beanstalk for web application deployment with auto-scaling capabilities.\n';
-                solution += '2. Optimize your database using Amazon DynamoDB for fast and predictable performance.\n';
-                solution += '3. Implement Amazon S3 for storing and serving images and static content efficiently.\n';
-                solution += '4. Utilize AWS Amplify for a full-stack web application with backend services.\n';
-            }
-
-            // Fallback if no specific solutions were added
-            if (!solution.includes('1.')) {
-                solution += 'No specific solution found. Please provide more details or check your keywords.';
-            }
-
-
-            solutionDiv.innerHTML = solution;
+<script>
+    function generateSolution() {
+        const prompt = document.getElementById('prompt').value;
+        const solutionDiv = document.getElementById('solution');
+    
+        if (!prompt) {
+            solutionDiv.innerHTML = 'Please enter a problem description.';
+            return;
         }
-    </script>
+    
+        let solution = 'Proposed Solution:\n\n';
+        const keywords = prompt.toLowerCase();
+    
+        // Define keyword flags
+        const eCommerce = keywords.includes("e-commerce");
+        const college = keywords.includes("college");
+        const department = keywords.includes("department");
+        const section = keywords.includes("section");
+        const groups = keywords.includes("groups");
+        const scalability = keywords.includes("scalability");
+        const backupAndRecovery = keywords.includes("backup and recovery");
+        const adminSection = keywords.includes("admin section");
+        const costEfficiency = keywords.includes("cost efficiency");
+    
+        const website = keywords.includes("website");
+        const hosting = keywords.includes("host");
+        const secure = keywords.includes("secure");
+        const highAvailability = keywords.includes("high availability") || keywords.includes("fault tolerant");
+        const trafficSpikes = keywords.includes("traffic spikes");
+        const costEffective = keywords.includes("cost-effective");
+        const performance = keywords.includes("performance");
+        const optimization = keywords.includes("cost optimized") || keywords.includes("optimization");
+    
+        const hospital = keywords.includes("hospital");
+        const patientManagement = keywords.includes("patient management");
+        const healthcareData = keywords.includes("healthcare data");
+        const security = keywords.includes("security");
+    
+        const shoppingMall = keywords.includes("shopping mall");
+        const storeManagement = keywords.includes("store management");
+        const customerData = keywords.includes("customer data");
+    
+        const smartCity = keywords.includes("smart city");
+        const IoTDevices = keywords.includes("iot devices");
+        const cityManagement = keywords.includes("city management");
+    
+        const colony = keywords.includes("colony");
+        const residentManagement = keywords.includes("resident management");
+        const communityData = keywords.includes("community data");
+    
+        const bigMarket = keywords.includes("big market");
+        const vendorManagement = keywords.includes("vendor management");
+        const inventoryData = keywords.includes("inventory data");
+    
+        const startup = keywords.includes("startup");
+        const productDevelopment = keywords.includes("product development");
+        const databaseApplication = keywords.includes("database application");
+        const database = keywords.includes("database");
+    
+        // Function to add solutions without repetition
+        let solutionCounter = 1;
+        const addSolution = (text) => {
+            if (!solution.includes(text)) {
+                solution += `${solutionCounter}. ${text}\n`;
+                solutionCounter++;
+            }
+        };
+    
+        // Database-related solutions
+        if (database || databaseApplication) {
+            addSolution('Use Amazon RDS (MySQL/PostgreSQL/Aurora) to deploy and manage relational databases.');
+            addSolution('Implement Amazon DynamoDB for highly scalable NoSQL database solutions.');
+            addSolution('Set up Amazon S3 for storing database backups and data archives.');
+            addSolution('Use Amazon Elasticache to improve database performance with caching.');
+            addSolution('Set up Amazon Route 53 for DNS management and routing to database instances.');
+            addSolution('Enable Auto Scaling for EC2 instances to handle database traffic spikes and growth.');
+            addSolution('Use AWS IAM for fine-grained access control and secure database access.');
+            addSolution('Implement AWS WAF to protect against SQL injection and other database attacks.');
+            addSolution('Use Amazon CloudWatch for database performance monitoring and alerting.');
+            addSolution('Implement Multi-AZ for high availability and automatic failover for RDS databases.');
+            addSolution('Enable automated backups for RDS and snapshots for disaster recovery.');
+            addSolution('Use Amazon Aurora Global Databases for cross-region database replication and failover.');
+            addSolution('Leverage AWS Cost Explorer to manage and optimize database-related cloud costs.');
+        }
+    
+        // Website-related solutions
+        if (website) {
+            addSolution('Host your website on Amazon S3.');
+            addSolution('Use Amazon CloudFront for CDN.');
+            addSolution('Implement AWS Certificate Manager for SSL.');
+            addSolution('Use Amazon Route 53 for domain registration and routing.');
+            addSolution('Set up AWS Amplify for full-stack development.');
+        }
+    
+        // E-commerce solutions
+        if (eCommerce) {
+            addSolution('Use Amazon Elastic Beanstalk for easy deployment and management of the application.');
+            addSolution('Utilize Amazon RDS for a managed relational database that scales as needed.');
+            addSolution('Implement Amazon CloudFront for fast content delivery and caching.');
+            addSolution('Store static assets in Amazon S3 for scalability and durability.');
+            addSolution('Set up Amazon Route 53 for DNS management with health checks.');
+            addSolution('Enable Auto Scaling to handle traffic spikes effectively.');
+        }
+    
+        // Security solutions
+        if (secure) {
+            addSolution('Use AWS Identity and Access Management (IAM) for fine-grained access control.');
+            addSolution('Implement AWS WAF (Web Application Firewall) to protect against common web exploits.');
+            addSolution('Use Amazon GuardDuty for continuous security monitoring.');
+            addSolution('Enable encryption for data at rest and in transit using AWS Key Management Service (KMS).');
+        }
+    
+        // High availability solutions
+        if (highAvailability) {
+            addSolution('Deploy the application across multiple Availability Zones for redundancy.');
+            addSolution('Use Elastic Load Balancing (ELB) to distribute incoming traffic evenly.');
+            addSolution('Utilize Amazon Aurora for a highly available and durable database solution.');
+            addSolution('Set up Amazon ElastiCache for caching frequently accessed data to improve performance.');
+        }
+    
+        // Traffic spikes solutions
+        if (trafficSpikes) {
+            addSolution('Implement AWS Lambda for serverless processing to handle sudden bursts of traffic.');
+            addSolution('Use Amazon API Gateway to manage APIs and scale automatically.');
+            addSolution('Enable CloudFront to cache content at edge locations, reducing latency.');
+        }
+    
+        // Cost-effective solutions
+        if (costEffective || costEfficiency) {
+            addSolution('Use AWS Cost Explorer to monitor and analyze spending patterns.');
+            addSolution('Implement Reserved Instances for long-term savings on EC2 and RDS instances.');
+            addSolution('Use S3 lifecycle policies to automatically transition data to lower-cost storage classes.');
+        }
+    
+        // Performance solutions
+        if (performance) {
+            addSolution('Optimize application performance using Amazon CloudWatch for monitoring and alerting.');
+            addSolution('Utilize AWS Global Accelerator to improve availability and performance of applications with global users.');
+        }
+    
+        // Fallback if no specific solutions were added
+        if (solutionCounter === 1) {
+            solution += 'No specific solution found. Please provide more details or check your keywords.';
+        }
+    
+        // Display the solution
+        solutionDiv.innerHTML = solution;
+    }
+</script>
 </body>
 
 </html>
